@@ -27,7 +27,7 @@
 <view class='statistics'>
   <view class='statistics-firstline'>
     <view class='statistics-title'>本月租金均价<span class='statistics-location'>运城</span></view>
-    <navigator class='statistics-more'>详情></navigator>
+    <navigator class='statistics-more' url="/pages/userold/userold" open-type="switchTab">详情></navigator>
   </view>
   <view class='statistics-hightlight'>
     <view class='statistics-average'>{{statistics.average}}</view>

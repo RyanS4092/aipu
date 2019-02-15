@@ -5,6 +5,7 @@
     "pages/myform/myform",
     "pages/allform/allform",
     "pages/search/search",
+    "pages/userold/userold",
     "pages/user/user"
   ],
   "tabBar": {

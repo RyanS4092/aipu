@@ -71,7 +71,7 @@ Page({
   },
   makeacall(e) {
     wx.makePhoneCall({
-      phoneNumber: '021 8888888'
+      phoneNumber: '0359 8888888'
     })
   },
   /**
