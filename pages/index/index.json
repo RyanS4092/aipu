@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "rentlist": "/components/rentlist/rentlist"
+  }
 }

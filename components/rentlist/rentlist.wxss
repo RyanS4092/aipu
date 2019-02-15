@@ -1,1 +1,84 @@
 /* components/rentlist/rentlist.wxss */
+.rentinform{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.rentinform-wrap{
+  display: flex;
+  margin-left: 13px;
+  flex-wrap: nowrap;
+  margin-top: 15px;
+}
+.rentinform-left{
+  width: 35vw;
+  height: 28vw;
+  overflow: hidden;
+}
+.rentinform-left img{
+  width: 100%;
+  height: auto;
+}
+.rentinform-right{
+  width: 53vw;
+  margin-left: 10px;
+  height: 28vw;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+.rentinform-firstline{
+  font-size: 15px;
+  margin-top: -2px;
+}
+.rentinform-secondline{
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  
+}
+.rentinform-description-wrap{
+  display: flex;
+  align-items: top;
+  width: 55%;
+}
+.rentinform-description{
+  width: 78px;
+  height: 14px;
+  overflow: hidden;
+  color: #868686;
+  line-height: 16px;
+}
+.rentinform-dots{
+  color: #868686;
+  margin-top: -3px;
+}
+.rentinform-price{
+  color: #dd5454;
+}
+.rentinform-thirdline{
+  width: 100%;
+  height: 20px;
+  overflow: hidden;
+  display: flex;
+  margin-top: 2px;
+}
+.rentinform-thirdline-item{
+  font-size: 11px;
+}
+
+.rentinform-tags{
+  padding: 1px 4px;
+  background-color: #e6e6e6;
+  border-radius: 5px;
+  margin-right: 10px;
+  color: #777777;
+}
+
+.divider-rentlist{
+  width: 94%;
+  height: 1px;
+  background-color: #e5e5e5;
+  margin-left: 10px;
+  margin-top: 10px;
+}

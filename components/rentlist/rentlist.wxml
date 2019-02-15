@@ -1,16 +1,24 @@
 <!--components/rentlist/rentlist.wxml-->
 <view class="rentinform" wx:for="{{rentinform}}">
   <view class='rentinform-wrap'>
-    <image class='rentinform-left' src='{{item.rentimg}}'></image>
+    <view class='rentinform-left'>
+      <image src='{{item.rentimg}}'></image>
+    </view>
     <view class='rentinform-right'>
       <view class='rentinform-firstline'>{{item.location}} | {{item.area}}㎡</view>
       <view class='rentinform-secondline'>
-        <view class='rentinform-description'>{{item.description}}</view>
+        <view class='rentinform-description-wrap'>
+          <view class='rentinform-description'>{{item.description}}</view>
+          <view class='rentinform-dots'>...</view>
+        </view>
         <view class='rentinform-price'>{{item.price}}</view>
       </view>
-      <view wx:for="{{item.taglist}}" class='rentinform-thirdline'>
-        <view class='rentinform-tags'>{{item.tags}}</view>
+      <view class='rentinform-thirdline'>
+        <view wx:for="{{item.taglist}}" class='rentinform-thirdline-item'>
+          <view class='rentinform-tags'>{{item}}</view>
+        </view>
       </view>
     </view>
   </view>
+  <view class='divider-rentlist'></view>
 </view>

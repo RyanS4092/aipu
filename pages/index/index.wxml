@@ -1,10 +1,19 @@
 <!--pages/index/index.wxml-->
+<view class='searchbar-wrap'>
+  <view class='searchbar'>
+    <navigator url='/pages/search/search' open-type="switchTab" class='searchbar-click'>
+      <image src='../../image/icon/search.png' class='searchbar-icon'></image>
+      <view class='searchbar-text'> | 点击搜索意向的位置、业态</view>
+    </navigator>
+    <image src='../../image/icon/call.png' class='makeacall' bindtap='makeacall'></image>
+  </view>
+</view>
 <swiper indicator-dots="{{true}}" autoplay="{{false}}" circular="{{true}}" vertical="{{false}}" interval="2000" duration="500" previous-margin="0px" next-margin="0px">
-  <block wx:for="{{background}}" wx:key="*this">
-    <swiper-item>
-      <view class='swiper-wrap'><image class="swiper-item" src='{{item}}'></image></view>
-    </swiper-item>
-  </block>
+    <block wx:for="{{background}}" wx:key="*this">
+      <swiper-item>
+        <view class='swiper-wrap'><image class="swiper-item" src='{{item}}'></image></view>
+      </swiper-item>
+    </block>
 </swiper>
 <view class='navbar'>
   <view wx:for="{{nav}}" class='navbar-item'>
@@ -49,4 +58,6 @@
 <view class='divider-index' style='margin-top:15px;'></view>
 <view class='recommend'>
   <view class='recommend-title'>猜你喜欢</view>
+  <rentlist rentinform="{{rentinform}}"></rentlist>
 </view>
+<navigator url="/pages/search/search" open-type="switchTab" class='findmore-index'>查看更多></navigator>

@@ -1,4 +1,39 @@
 /* pages/index/index.wxss */
+.searchbar-wrap{
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  width: 100%;
+}
+.searchbar{
+  width: 87%;
+  height: 20px;
+  padding: 20px 20px 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.searchbar-click{
+  background-color: rgba(255,255,255,0.4);
+  padding: 5px 10px;
+  display: flex;
+  width: 70vw;
+  height: 18px;
+}
+.searchbar-icon{
+  width: 16px;
+  height: 16px;
+}
+.searchbar-text{
+  font-size: 14px;
+  color: #ffffff;
+  margin-left: 10px;
+}
+.makeacall{
+  width: 18px;
+  height: 18px;
+}
 swiper{
   height: 50vw;
 }
@@ -49,7 +84,7 @@ swiper{
 }
 .statistics-title{
   margin-left: 13px;
-  font-size: 16px;
+  font-size: 18px;
 }
 .statistics-location{
   margin-left: 5px;
@@ -107,5 +142,13 @@ swiper{
 }
 .recommend-title{
   margin-left: 13px;
-  font-size: 16px;
+  font-size: 18px;
+}
+.findmore-index{
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 60px;
+  font-size: 14px;
+  color: #868686;
+  text-align: center
 }

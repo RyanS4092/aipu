@@ -31,9 +31,49 @@ Page({
         totaltoday: 369,
         total: 34652,
         totaluser: 55883
-    }
+    },
+    rentinform: [{
+        rentimg: "../../image/rent/rent1.jpg",
+        location: "条山街",
+        area: 200,
+        description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
+        price: "6000元/月",
+        taglist: ["位置优越","开ktv","开酒店"]
+      }, {
+        rentimg: "../../image/rent/rent1.jpg",
+        location: "条山街",
+        area: 200,
+        description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
+        price: "6000元/月",
+        taglist: ["位置优越", "开ktv", "开酒店"]
+      }, {
+        rentimg: "../../image/rent/rent1.jpg",
+        location: "条山街",
+        area: 200,
+        description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
+        price: "6000元/月",
+        taglist: ["位置优越", "开ktv", "开酒店"]
+      }, {
+        rentimg: "../../image/rent/rent1.jpg",
+        location: "条山街",
+        area: 200,
+        description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
+        price: "6000元/月",
+        taglist: ["位置优越", "开ktv", "开酒店"]
+      }, {
+        rentimg: "../../image/rent/rent1.jpg",
+        location: "条山街",
+        area: 200,
+        description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
+        price: "6000元/月",
+        taglist: ["位置优越", "开ktv", "开酒店"]
+      }]
   },
-
+  makeacall(e) {
+    wx.makePhoneCall({
+      phoneNumber: '021 8888888'
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
