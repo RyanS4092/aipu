@@ -1,0 +1,2 @@
+<!--pages/allform/allform.wxml-->
+<view wx:for="{{userForm}}">{{index+1}}.　{{item.userName}}　{{item.userJobTitle}}　{{item.userSalary}}</view>
