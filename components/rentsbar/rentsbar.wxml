@@ -1,0 +1,19 @@
+<!--components/rentsbar/rentsbar.wxml-->
+<cover-view class='rentsbar'>
+  <cover-view class='rentsbar-collection'>
+    <cover-image src='{{icon.collection}}'></cover-image>
+    <cover-view>收藏</cover-view>
+  </cover-view>
+  <cover-view class='rentsbar-share'>
+    <button open-type='share' class='rentsbar-share-button' hover-class='none'>
+      <cover-view class='rentsbar-share-inner'>
+        <cover-image src='{{icon.share}}'></cover-image>
+        <cover-view>分享给好友</cover-view>
+      </cover-view>
+    </button>
+  </cover-view>
+  <cover-view class='rentsbar-call' data-mobile="{{rentsmobile}}" bindtap='callrents'>
+    <cover-image src='{{icon.call}}'></cover-image>
+    <cover-view>直拨店主</cover-view>
+  </cover-view>
+</cover-view>

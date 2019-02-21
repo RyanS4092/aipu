@@ -1,2 +1,16 @@
 <!--pages/search/search.wxml-->
-<text>pages/search/search.wxml</text>
+<view class='searchbar'>
+  <view class='searchbar-click'>
+    <image src='../../image/icon/searchgrey.png' class='searchbar-icon'></image>
+    <form class='searchbar-text'><input name="input" placeholder="点击搜索意向的位置、业态" /></form>
+  </view>
+  <image src='../../image/icon/callgrey.png' class='makeacall' bindtap='makeacall'></image>
+</view>
+<view class='selectlist-wrap'>
+  <view wx:for="{{selectlist}}" class='selectlist' wx:key="{{index}}">
+    <view class='selectlist-text' style='font-size:{{item.fontsize}};color:{{item.color}}'>{{item.name}}▼</view>
+  </view>
+</view>
+<view class='divider-index'></view>
+<rentlist rentinform="{{rentinform}}"></rentlist>
+<view class='bottomspace'></view>

@@ -1,1 +1,44 @@
 /* pages/user/user.wxss */
+.userinfo{
+  display: flex;
+  padding-left: 10px;
+  width: 100%;
+  align-items: center;
+  background-color: #fff;
+}
+.userinfo-avatar{
+  width: 18vw;
+  height: 18vw;
+  margin: 10px;
+  border-radius: 50%;
+}
+.userinfo-name{
+  font-size: 16px;
+}
+.userinfo-mobile{
+  display: flex;
+  flex-flow: row nowrap;
+  margin-top: 10px;
+  align-items: flex-end;
+}
+.userinfo-mobile-number{
+  color: #dd5454;
+  font-size: 14px;
+}
+.userinfo-mobile-status{
+  margin-left: 10px;
+  font-size: 14px;
+}
+.usernav{
+  margin-top: 15px;
+}
+.usernav-list{
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 20px 25px;
+  font-size: 14px;
+}
+.usernav-description{
+  color: #868686;
+}

@@ -1,0 +1,2 @@
+<!--pages/request/request.wxml-->
+<requestcomponent requestinform="{{requestinform}}"></requestcomponent>

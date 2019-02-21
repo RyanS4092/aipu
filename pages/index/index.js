@@ -9,20 +9,24 @@ Page({
     nav: [{
             name:"查看新铺",
             icon:"../../image/icon/dianpu.png",
-            link:"../search/search"
+            link:"../search/search",
+            opentype: "switchTab"
           },
           {
             name: "求租信息",
             icon: "../../image/icon/dianpu.png",
-            link: "../search/search"
+            link: "../requestpage/requestpage",
+            opentype: "navigate"
           },{
             name: "我要找铺",
             icon: "../../image/icon/dianpu.png",
-            link: "../search/search"
+            link: "../search/search",
+            opentype: "navigate"
           },{
             name: "我要转铺",
             icon: "../../image/icon/dianpu.png",
-            link: "../search/search"
+            link: "../search/search",
+            opentype: "navigate"
           }],
     statistics: {
         average: 5.45,
@@ -34,39 +38,49 @@ Page({
     },
     rentinform: [{
         rentimg: "../../image/rent/rent1.jpg",
-        location: "条山街",
+        region: "条山街",
         area: 200,
         description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
-        price: "6000元/月",
-        taglist: ["位置优越","开ktv","开酒店"]
+        price: 6000,
+        priceunit: "元/月",
+        taglist: ["位置优越", "开ktv", "开酒店"],
+        hot: "热门"
       }, {
         rentimg: "../../image/rent/rent1.jpg",
-        location: "条山街",
+        region: "条山街",
         area: 200,
         description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
-        price: "6000元/月",
-        taglist: ["位置优越", "开ktv", "开酒店"]
+        price: 6000,
+        priceunit: "元/月",
+        taglist: ["位置优越", "开ktv", "开酒店"],
+        hot: "热门"
       }, {
         rentimg: "../../image/rent/rent1.jpg",
-        location: "条山街",
+        region: "条山街",
         area: 200,
         description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
-        price: "6000元/月",
-        taglist: ["位置优越", "开ktv", "开酒店"]
+        price: 6000,
+        priceunit: "元/月",
+        taglist: ["位置优越", "开ktv", "开酒店"],
+        hot: "热门"
       }, {
         rentimg: "../../image/rent/rent1.jpg",
-        location: "条山街",
+        region: "条山街",
         area: 200,
         description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
-        price: "6000元/月",
-        taglist: ["位置优越", "开ktv", "开酒店"]
+        price: 6000,
+        priceunit: "元/月",
+        taglist: ["位置优越", "开ktv", "开酒店"],
+        hot: "热门"
       }, {
         rentimg: "../../image/rent/rent1.jpg",
-        location: "条山街",
+        region: "条山街",
         area: 200,
         description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
-        price: "6000元/月",
-        taglist: ["位置优越", "开ktv", "开酒店"]
+        price: 6000,
+        priceunit: "元/月",
+        taglist: ["位置优越", "开ktv", "开酒店"],
+        hot: "热门"
       }]
   },
   makeacall(e) {

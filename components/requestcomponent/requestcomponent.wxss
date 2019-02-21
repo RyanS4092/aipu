@@ -1,0 +1,30 @@
+/* components/requestcomponent/requestcomponent.wxss */
+.requestinform{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.request-firstline{
+  display: flex;
+  justify-content: space-between;
+  padding: 13px;
+}
+.request-title{
+  font-size: 14px;
+  font-weight: bold;
+}
+.request-time{
+  font-size: 10px;
+  color: #8f8f8f;
+}
+.request-lists{
+  font-size: 12px;
+  color: #8f8f8f;
+  padding: 0 13px 13px 13px;
+}
+.divider-request{
+  width: 94%;
+  height: 1px;
+  background-color: #e5e5e5;
+  margin-left: 13px;
+}

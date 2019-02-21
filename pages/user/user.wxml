@@ -1,2 +1,22 @@
 <!--pages/user/user.wxml-->
-<text>pages/user/user.wxml</text>
+<view class='greyback' style='height:{{pageheight}}px'>
+  <view class='userinfo'>
+    <image class='userinfo-avatar' src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    <view class='userinfo-right'>
+      <view class='userinfo-name'>{{userInfo.nickName}}</view>
+      <view class='userinfo-mobile'>
+        <view class='userinfo-mobile-number'>{{mobile.number}}</view>
+        <view class='userinfo-mobile-status'>{{mobile.status}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='usernav'>
+    <view wx:for="{{usernav}}" wx:key="{{index}}">
+      <navigator url='{{item.url}}' open-type="navigate" class='usernav-list'>
+        <view class='usernav-name'>{{item.name}}</view>
+        <view class='usernav-description'>{{item.description}}</view>
+      </navigator>
+      <view class='divider-index'></view>
+    </view>
+  </view>
+</view>

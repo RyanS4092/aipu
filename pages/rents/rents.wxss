@@ -1,0 +1,122 @@
+/* pages/rents/rents.wxss */
+swiper{
+  height: 60vw;
+}
+.swiper-wrap{
+  display: block;
+  width: 100%;
+  height: 60vw;
+}
+.swiper-item{
+  width: 100%;
+  height: 100%;
+}
+.swiperbottom{
+  width: 100vw;
+  position: relative;
+  height: 25px;
+  top: -25px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  align-items: center;
+}
+.numbering{
+  margin-left: 13px;
+}
+.swiperorder{
+  margin-right: 13px;
+}
+.details-wrap{
+  padding: 0 13px;
+}
+.title-line{
+  margin-top: -10px;
+}
+.hot{
+  float: left;
+  font-size: 10px;
+  padding: 2px 4px;
+  background-color: #f6c83c;
+  color: #fff;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+.title{
+  font-size: 16px;
+  line-height: 18px; 
+}
+.taglist-wrap{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 7px;
+}
+.taglist{
+  font-size: 11px;
+  padding: 1px 4px;
+  border: 1px solid #dd5454;
+  border-radius: 5px;
+  margin-right: 10px;
+  color: #dd5454;
+}
+.details{
+  display: flex;
+  margin-top: 10px;
+  align-items: baseline;
+}
+.details-title{
+  text-align: justify;
+  width: 18%;
+  font-size: 14px;
+  color: #919191;
+  height: 18px;
+}
+.details-fee{
+  margin-left: 4%;
+  font-size: 18px;
+  color: #dd5454;
+}
+.details-title span{
+  display: inline-block; padding-left: 100%;
+}
+.pricenumber{
+  margin-left: 4%;
+  font-size: 18px;
+  color: #dd5454;
+}
+.priceunit{
+  font-size: 12px;
+  color: #dd5454;
+}
+.paymentcycle{
+  font-size: 12px;
+  color: #919191;
+  margin-left: 10px;
+}
+.details-content{
+  width: 77%;
+  margin-left: 4%;
+}
+.recommend{
+  margin-top: 10px;
+}
+.recommend-title{
+  margin-left: 13px;
+  font-size: 18px;
+}
+.findmore-rents{
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 60px;
+  font-size: 14px;
+  color: #868686;
+  text-align: center
+}
+.tab-bar-border{
+  display: none;
+}
+.tab-bar-item{
+  display: none;
+}

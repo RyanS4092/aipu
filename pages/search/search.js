@@ -1,31 +1,74 @@
 // pages/search/search.js
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    selectlist: [{
+      name: "区域",
+      color: "#333333",
+      fontsize: "14px"
+    },{
+      name: "面积",
+      color: "#333333",
+      fontsize: "14px"
+    }, {
+      name: "费用",
+      color: "#333333",
+      fontsize: "14px"
+    }, {
+      name: "类型",
+      color: "#333333",
+      fontsize: "14px"
+  }],
+  rentinform: [{
+    rentimg: "../../image/rent/rent1.jpg",
+    region: "条山街",
+    area: 200,
+    description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
+    price: 6000,
+    priceunit: "元/月",
+    taglist: ["位置优越", "开ktv", "开酒店"],
+    hot: "热门"
+  }, {
+    rentimg: "../../image/rent/rent1.jpg",
+    region: "条山街",
+    area: 200,
+    description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
+    price: 6000,
+    priceunit: "元/月",
+    taglist: ["位置优越", "开ktv", "开酒店"],
+    hot: "热门"
+  }, {
+    rentimg: "../../image/rent/rent1.jpg",
+    region: "条山街",
+    area: 200,
+    description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
+    price: 6000,
+    priceunit: "元/月",
+    taglist: ["位置优越", "开ktv", "开酒店"]
+  }, {
+    rentimg: "../../image/rent/rent1.jpg",
+    region: "条山街",
+    area: 200,
+    description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
+    price: 6000,
+    priceunit: "元/月",
+    taglist: ["位置优越", "开ktv", "开酒店"]
+  }, {
+    rentimg: "../../image/rent/rent1.jpg",
+    region: "条山街",
+    area: 200,
+    description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
+    price: 6000,
+    priceunit: "元/月",
+    taglist: ["位置优越", "开ktv", "开酒店"]
+  }]
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady: function () {
 
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
     if (typeof this.getTabBar === 'function' &&
       this.getTabBar()) {
@@ -34,39 +77,9 @@ Page({
       })
     }
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  makeacall(e) {
+    wx.makePhoneCall({
+      phoneNumber: '0359 8888888'
+    })
   }
 })

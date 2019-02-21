@@ -1,0 +1,13 @@
+<!--pages/collection/collection.wxml-->
+<view class='bar'>
+  <view wx:for="{{bar}}" class='bar-list' wx:key="{{index}}" bindtap='barclick' data-index="{{index}}">
+    <view wx:if="{{item.status}}" class='bar-text-red'>{{item.name}}</view>
+    <view wx:elif="!{{item.status}}" class='bar-text'>{{item.name}}</view>
+    <view wx:if="{{item.status}}" class='bar-red'></view>
+    <view wx:elif="!{{item.status}}" class='bar-grey'></view>
+  </view>
+</view>
+<rentlist wx:if="{{bar[0].status}}" rentinform="{{rentinform}}"></rentlist>
+<requestcomponent wx:if="{{bar[1].status}}" requestinform="{{requestinform}}"></requestcomponent>
+
+

@@ -1,24 +1,25 @@
 <!--components/rentlist/rentlist.wxml-->
-<view class="rentinform" wx:for="{{rentinform}}">
+<navigator open-type='navigate' class="rentinform" wx:for="{{rentinform}}" url="../rents/rents" wx:key="{{index}}">
   <view class='rentinform-wrap'>
     <view class='rentinform-left'>
-      <image src='{{item.rentimg}}'></image>
+      <image class='rentinform-img' src='{{item.rentimg}}'></image>
+      <view wx:if="{{item.hot}}" class='rentinform-hot'>{{item.hot}}</view>
     </view>
     <view class='rentinform-right'>
-      <view class='rentinform-firstline'>{{item.location}} | {{item.area}}㎡</view>
+      <view class='rentinform-firstline'>{{item.region}} | {{item.area}}㎡</view>
       <view class='rentinform-secondline'>
         <view class='rentinform-description-wrap'>
           <view class='rentinform-description'>{{item.description}}</view>
           <view class='rentinform-dots'>...</view>
         </view>
-        <view class='rentinform-price'>{{item.price}}</view>
+        <view class='rentinform-price'>{{item.price}}{{item.priceunit}}</view>
       </view>
       <view class='rentinform-thirdline'>
-        <view wx:for="{{item.taglist}}" class='rentinform-thirdline-item'>
+        <view wx:for="{{item.taglist}}" class='rentinform-thirdline-item' wx:key="{{index}}">
           <view class='rentinform-tags'>{{item}}</view>
         </view>
       </view>
     </view>
   </view>
   <view class='divider-rentlist'></view>
-</view>
+</navigator>

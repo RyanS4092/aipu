@@ -6,7 +6,12 @@
     "pages/allform/allform",
     "pages/search/search",
     "pages/userold/userold",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/collection/collection",
+    "pages/rents/rents",
+    "pages/requestpage/requestpage",
+    "pages/requests/requests",
+    "pages/history/history"
   ],
   "tabBar": {
     "custom": true,

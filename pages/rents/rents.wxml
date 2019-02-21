@@ -1,0 +1,63 @@
+<!--pages/rents/rents.wxml-->
+<swiper indicator-dots="{{false}}" autoplay="{{false}}" circular="{{false}}" vertical="{{false}}" interval="2000" duration="500" previous-margin="0px" next-margin="0px" bindchange='onSlideChangeEnd'>
+    <block wx:for="{{rent.rentimg}}" wx:key="*this">
+      <swiper-item>
+        <view class='swiper-wrap'><image class="swiper-item" src='{{item}}'></image></view>
+      </swiper-item>
+    </block>
+</swiper>
+<view class='swiperbottom'>
+  <view class='numbering'>商品编号：{{rent.numbering}}</view>
+  <view class='swiperorder'>{{currentswiper}}/{{countrentimgs}}</view>
+</view>
+<view class='details-wrap'>
+  <view class='title-line'>
+    <view wx:if="{{rent.hot}}" class='hot'>{{rent.hot}}</view>
+    <view class='title'>{{rent.title}}</view>
+    <view style='clear:all;'></view>
+  </view>
+  <view class='taglist-wrap'>
+    <view wx:for="{{rent.taglist}}" wx:key="{{index}}" class='taglist'>{{item}}</view>
+  </view>
+  <view class="divider-index" style='margin-top: 7px;'></view>
+  <view class='details'>
+    <view class="details-title">租金<span></span></view>
+    <view class='pricenumber'>{{rent.price}}<span class="priceunit">{{rent.priceunit}}</span><span class="paymentcycle">({{rent.paymentcycle}})</span></view>
+  </view>
+  <view class='details'>
+    <view class="details-title">转让费<span></span></view>
+    <view class='details-fee'>{{rent.transferfee}}</view>
+  </view>
+  <view class='details'>
+    <view class="details-title">面积<span></span></view>
+    <view class='details-content'>{{rent.area}}㎡</view>
+  </view>
+  <view class='details'>
+    <view class="details-title">区域<span></span></view>
+    <view class='details-content'>{{rent.region}}</view>
+  </view>
+  <view class='details'>
+    <view class="details-title">地址<span></span></view>
+    <view class='details-content'>{{rent.location}}</view>
+  </view>
+  <view class='details'>
+    <view class="details-title">详情<span></span></view>
+    <view class='details-content'>{{rent.description}}</view>
+  </view>
+</view>
+<map
+  id="myMap"
+  style="width: 100%; height: 200px;margin-top:15px;"
+  latitude="{{rent.maplocation.latitude}}"
+  longitude="{{rent.maplocation.longitude}}"
+  markers="{{markers}}"
+  show-location
+  bindtap='mapClick'
+  enable-scroll="{{true}}"
+></map>
+<view class='recommend'>
+  <view class='recommend-title'>推荐商铺</view>
+  <rentlist rentinform="{{rentinform}}"></rentlist>
+</view>
+<navigator url="/pages/search/search" open-type="switchTab" class='findmore-rents'>查看更多></navigator>
+<rentsbar rentsmobile="{{rent.mobile}}"></rentsbar>

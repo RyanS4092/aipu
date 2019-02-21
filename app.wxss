@@ -4,3 +4,9 @@
   height: 1px;
   background-color: #e5e5e5;
 }
+.greyback{
+  background-color: #f7f7f7;
+}
+.bottomspace{
+  height: 48px;
+}
