@@ -11,7 +11,10 @@
     "pages/rents/rents",
     "pages/requestpage/requestpage",
     "pages/requests/requests",
-    "pages/history/history"
+    "pages/history/history",
+    "pages/about/about",
+    "pages/seekform/seekform",
+    "pages/rentform/rentform"
   ],
   "tabBar": {
     "custom": true,

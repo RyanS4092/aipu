@@ -1,0 +1,58 @@
+<!--pages/rentform/rentform.wxml-->
+<view class='greyback'>
+  <gradientbar agentinform="{{agentinform}}"></gradientbar>
+  <form bindsubmit='rentSubmit' class='form'>
+    <view class='formbar'>
+      <text class='formtitles'>标题</text>
+      <input name="title" class='forminput' placeholder="输入信息标题（30字内）" maxlength="30" type='text'></input>
+    </view>
+    <view class='formbar'>
+      <text class='formtitles'>区域</text>
+      <picker name="region" bindchange="bindPickerChangeRegion" value="{{regionindex}}" range="{{region}}">
+        <view class="picker">
+          {{region[regionindex]}}
+        </view>
+      </picker>
+    </view>
+    <view class='formbar'>
+      <text class='formtitles'>地址</text>
+      <input class='forminput' name="location" placeholder="详细地址" maxlength="45" type='text'></input>
+    </view>
+    <view class='formbar'>
+      <text class='formtitles'>面积</text>
+      <input class='forminput' placeholder="单位：㎡" maxlength="6" type='number' name="area"></input>
+    </view>
+    <view class='formbar'>
+      <text class='formtitles'>价格</text>
+      <input name="price" class='forminput' placeholder="单位：元/月" maxlength="10" type='number'></input>
+    </view>
+    <view class='formbar'>
+      <text class='formtitles'>付款周期</text>
+      <picker name="paymentcycle" bindchange="bindPickerChangeCycle" value="{{cycleindex}}" range="{{cycle}}">
+        <view class="picker">
+          {{cycle[cycleindex]}}
+        </view>
+      </picker>
+    </view>
+    <view class='formbar'>
+      <text class='formtitles'>转让费</text>
+      <input name="transferfee" class='forminput' placeholder="单位：万元（没有填0）" maxlength="5" type='number'></input>
+    </view>
+    <view class='formbar'>
+      <text class='formtitles'>商铺定位</text>
+      <view class='selectlocation-wrap'>
+        <image wx:if="{{selectlocation}}" src='../../image/icon/success.png' class='success'></image>
+        <image src='../../image/icon/location.png' class='selectlocation' bindtap='selectlocation'></image>
+      </view>
+    </view>
+    <view class='formbar'>
+      <text class='formtitles'>是否上热门</text>
+      <switch name="hot"></switch>
+    </view>
+    <view class='formreminder'>上热门需要消耗15铺币</view>
+    <textarea name="transferfee" class='textarea' placeholder="添加详情描述（140字内）" placeholder-style="color:#000;" />
+    
+    <button form-type='submit' class='submit' >提交转租信息</button>
+  </form>
+  <view style='height:80px;'></view>
+</view>

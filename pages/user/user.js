@@ -13,20 +13,40 @@ Page({
     usernav:[{
       name: "我的收藏",
       description: "查看收藏的信息",
-      url: "../collection/collection"
+      func: "collect"
       }, {
         name: "浏览记录",
         description: "我浏览过的信息",
-        url: "../history/history"
+        func: "history"
       }, {
         name: "关于我们",
         description: "关于灵通商铺",
-        url: "../collection/collection"
+        func: "about"
       }, {
         name: "联系客服",
         description: "0359-8888888",
-        url: "../collection/collection"
+        func: "callserve"
       }]
+  },
+  collect(){
+    wx.navigateTo({
+      url: '../collection/collection'
+    })
+  },
+  history() {
+    wx.navigateTo({
+      url: '../history/history'
+    })
+  }, 
+  about() {
+    wx.navigateTo({
+      url: '../about/about'
+    })
+  },
+  callserve(){
+    wx.makePhoneCall({
+      phoneNumber: '0359 8888888',
+    })
   },
   onLoad: function () {
     this.setData({

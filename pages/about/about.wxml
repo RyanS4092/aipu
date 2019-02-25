@@ -1,0 +1,14 @@
+<!--pages/about/about.wxml-->
+<view class='about'>
+  <view class='logo'>
+      <image src="../../image/icon/logo.png" class='logo-img'></image>
+      <view class='logo-text'>灵通商铺</view>
+  </view>
+  <view class='about-title'>关于我们</view>
+  <view class='about-description'>山西灵通资讯信息服务有限公司（简称“灵通资讯”），成立于1996年5月，多年来，公司凭着艰苦奋斗，自强不息的创业精神和“以人为本，务实创新，每一条信息都真实·有效”的经营方针，从当初几个人的小集体，发展到现在近200人及相关业务多元化发展的经营团队。
+公司现有五大事业部：招聘事业部、房产事业部、商铺事业部、家政事业部、技术运营中心。公司以超前的理念、敏锐的角度、新颖的设计、不懈地努力和服务为本的原则，全面拓展传媒服务领域，并与客户建立了高效的良性互动。</view>
+  <view class='about-title'>关于灵通商铺</view>
+  <view class='about-description'>运城灵通商铺交易平台，是创造精准开店、闪电转店、极致服务的商业地产O2O实践者。</view>
+  <view class='about-description'>灵通商铺，让开店简单愉悦</view>
+</view>
+

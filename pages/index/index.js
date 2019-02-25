@@ -20,12 +20,12 @@ Page({
           },{
             name: "我要找铺",
             icon: "../../image/icon/dianpu.png",
-            link: "../search/search",
+            link: "../seekform/seekform",
             opentype: "navigate"
           },{
             name: "我要转铺",
             icon: "../../image/icon/dianpu.png",
-            link: "../search/search",
+            link: "../rentform/rentform",
             opentype: "navigate"
           }],
     statistics: {

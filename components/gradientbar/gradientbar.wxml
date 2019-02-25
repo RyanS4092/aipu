@@ -1,0 +1,12 @@
+<!--components/gradientbar/gradientbar.wxml-->
+<view class='gradientbar'>
+  <image class='agentavatar' src='{{currentagent.agentavatar}}'></image>
+  <view class='gradientbar-right'>
+    <view class='agentname'>{{currentagent.nametitle}}</view>
+    <view class='agentwords'>
+      <image class='quoteleft' src='/image/icon/quoteleft.png'></image>
+      {{currentagent.words}}
+      <image class='quoteright' src='/image/icon/quoteright.png'></image>
+    </view>
+  </view>
+</view>
