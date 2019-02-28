@@ -1,22 +1,43 @@
 <!--pages/user/user.wxml-->
 <view class='greyback' style='height:{{pageheight}}px'>
   <view class='userinfo'>
-    <image class='userinfo-avatar' src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    <image class='userinfo-avatar' src="{{userInfo.wechatImg}}" mode="cover"></image>
     <view class='userinfo-right'>
-      <view class='userinfo-name'>{{userInfo.nickName}}</view>
+      <view class='userinfo-right-firstline'>
+        <view class='userinfo-name'>{{userInfo.wechatName}}</view>
+        <view class='userinfo-sign' bindtap='checkIn'>签到</view>
+      </view>
       <view class='userinfo-mobile'>
         <view class='userinfo-mobile-number'>{{mobile.number}}</view>
         <view class='userinfo-mobile-status'>{{mobile.status}}</view>
       </view>
     </view>
   </view>
+  <view class='usercoin-wrap'>
+    <view class='usercoin'>我拥有的铺币：<span class="coincount">{{currentCoin}}</span> 枚</view>
+    <view class='userreminder'>每日签到可获得1枚铺币</view>
+  </view>
   <view class='usernav'>
-    <view wx:for="{{usernav}}" wx:key="{{index}}">
+    <view wx:for="{{usernav}}" wx:key="{{index}}" style='margin-top:10px;'>
       <view open-type="navigate" class='usernav-list' bindtap='{{item.func}}'>
         <view class='usernav-name'>{{item.name}}</view>
         <view class='usernav-description'>{{item.description}}</view>
       </view>
-      <view class='divider-index'></view>
     </view>
   </view>
+  <view style='height:60px;'></view>
+</view>
+<view class='reminder' bindtap='closereminder' style='height:{{pageheight}}px' wx:if="{{checkInStatus == 1}}">
+  <view class='reminderblank'>
+    <view>今天已经签到过啦</view>
+  </view>
+</view>
+<view class='reminder' bindtap='closereminder'  style='height:{{pageheight}}px' wx:if="{{checkInStatus == 2}}">
+  <view class='reminderblank'>
+    <view>签到成功</view>
+    <view>铺币+1</view>
+  </view>
+</view>
+<view class='loading' wx:if="{{loadingstatus}}" style='height:{{pageheight}}px'>
+  <image class='loadingimg' src='../../image/icon/loading.gif'></image>
 </view>

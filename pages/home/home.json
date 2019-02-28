@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "rentlist": "/components/rentlist/rentlist"
+  },
+  "navigationBarTitleText": "灵通商铺"
+}

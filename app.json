@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/home/home",
     "pages/form/form",
     "pages/myform/myform",
     "pages/allform/allform",
@@ -14,7 +15,9 @@
     "pages/history/history",
     "pages/about/about",
     "pages/seekform/seekform",
-    "pages/rentform/rentform"
+    "pages/rentform/rentform",
+    "pages/rentmanagement/rentmanagement",
+    "pages/requestmanagement/requestmanagement"
   ],
   "tabBar": {
     "custom": true,
@@ -24,7 +27,7 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/home/home",
         "iconPath": "/image/tabbar/index_icon.png",
         "selectedIconPath": "/image/tabbar/index_icon_red.png",
         "text": "首页"

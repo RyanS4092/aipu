@@ -51,8 +51,9 @@
     </view>
     <view class='formreminder'>上热门需要消耗15铺币</view>
     <textarea name="transferfee" class='textarea' placeholder="添加详情描述（140字内）" placeholder-style="color:#000;" />
-    
-    <button form-type='submit' class='submit' >提交转租信息</button>
+    <cover-view class='submitbutton'>
+      <button form-type='submit' class='submit' >提交转租信息</button>
+    </cover-view>
   </form>
   <view style='height:80px;'></view>
 </view>

@@ -1,63 +1,13 @@
 <!--pages/index/index.wxml-->
-<view class='searchbar-wrap'>
-  <view class='searchbar'>
-    <navigator url='/pages/search/search' open-type="switchTab" class='searchbar-click'>
-      <image src='../../image/icon/search.png' class='searchbar-icon'></image>
-      <view class='searchbar-text'> | 点击搜索意向的位置、业态</view>
-    </navigator>
-    <image src='../../image/icon/call.png' class='makeacall' bindtap='makeacall'></image>
+<view class='getuserinfo'>
+  <view class='image-wrap'>
+    <image src='../../image/icon/logo.png' class='getuserinfo-image'></image>
+  </view>
+  <view class='getuserinfo-title'>灵通商铺申请获取你的用户信息</view>
+  <view class='getuserinfo-buttons'>
+      <button open-type='getUserInfo' class='getuserinfo-authorize' bindgetuserinfo="gotUserAuthorize" type='primary'>授权</button>
   </view>
 </view>
-<swiper indicator-dots="{{true}}" autoplay="{{false}}" circular="{{true}}" vertical="{{false}}" interval="2000" duration="500" previous-margin="0px" next-margin="0px">
-    <block wx:for="{{background}}" wx:key="*this">
-      <swiper-item>
-        <view class='swiper-wrap'><image class="swiper-item" src='{{item}}'></image></view>
-      </swiper-item>
-    </block>
-</swiper>
-<view class='navbar'>
-  <view wx:for="{{nav}}" class='navbar-item' wx:key="{{index}}">
-    <navigator url='{{item.link}}' open-type="{{item.opentype}}" class='navbar-link'>
-      <image src='{{item.icon}}' class='navbar-img'></image>
-      <text class='navbar-text'>{{item.name}}</text>
-    </navigator>
-  </view>
+<view class='loading' wx:if="{{loadingstatus}}" style='height:{{pageheight}}px'>
+  <image class='loadingimg' src='../../image/icon/loading.gif'></image>
 </view>
-<view class='divider-index' style='margin-top:10px;'></view>
-<view class='statistics'>
-  <view class='statistics-firstline'>
-    <view class='statistics-title'>本月租金均价</view>
-    <navigator class='statistics-more' url="/pages/userold/userold" open-type="navigate">运城</navigator>
-  </view>
-  <view class='statistics-hightlight'>
-    <view class='statistics-average'>{{statistics.average}}</view>
-    <view class='statistics-hightlight-right'>
-      <view class='statistics-updown'>比上月{{statistics.updown}}{{statistics.percentage}}
-      </view>
-      <view class='statistics-unit'>元/㎡/天</view>
-    </view>
-  </view>
-  <view class='statistics-thirdline'>
-     <view class='statistics-thirdline-column'>
-        <view class='statistics-thirdline-numbers'>{{statistics.totaltoday}}<span>套
-        </span></view>
-        <view class='statistics-thirdline-text'>24小时新上</view>
-     </view>
-     <view class='statistics-thirdline-column'>
-        <view class='statistics-thirdline-numbers'>{{statistics.total}}<span>套
-        </span></view>
-        <view class='statistics-thirdline-text'>在转商铺</view>
-     </view>
-     <view class='statistics-thirdline-column'>
-        <view class='statistics-thirdline-numbers'>{{statistics.totaluser}}<span>人
-        </span></view>
-        <view class='statistics-thirdline-text'>正在找铺</view>
-     </view>
-  </view>
-</view>
-<view class='divider-index' style='margin-top:15px;'></view>
-<view class='recommend'>
-  <view class='recommend-title'>猜你喜欢</view>
-  <rentlist rentinform="{{rentinform}}"></rentlist>
-</view>
-<navigator url="/pages/search/search" open-type="switchTab" class='findmore-index'>查看更多></navigator>

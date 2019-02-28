@@ -16,10 +16,14 @@
   text-align: right;
   margin-right: 20px;
 }
-.submit{
+.submitbutton{
+  width: 100%;
+  height: 48px;
   position: fixed;
   left: 0;
   bottom: 0;
+}
+.submit{
   width: 100%;
   height: 48px;
   background-color: #dd5454;

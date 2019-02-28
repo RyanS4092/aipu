@@ -38,7 +38,9 @@
       <text class='formtitles'>是否接受转让费</text>
       <switch name="transferfee"></switch>
     </view>
-    <button form-type='submit' class='submit' >提交转租信息</button>
+    <cover-view class='submitbutton'>
+      <button form-type='submit' class='submit' >提交转租信息</button>
+    </cover-view>
   </form>
   <view style='height:80px;'></view>
 </view>

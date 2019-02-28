@@ -12,8 +12,17 @@
   margin: 10px;
   border-radius: 50%;
 }
+.userinfo-right-firstline{
+  display: flex;
+}
 .userinfo-name{
   font-size: 16px;
+}
+.userinfo-sign{
+  color: #dd5454;
+  margin-left: 15px;
+  font-size: 16px;
+  text-decoration: underline;
 }
 .userinfo-mobile{
   display: flex;
@@ -27,6 +36,24 @@
 }
 .userinfo-mobile-status{
   margin-left: 10px;
+  font-size: 14px;
+}
+.usercoin-wrap{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.usercoin{
+  margin-top: 10px;
+  font-size: 14px;
+}
+.coincount{
+  color: #dd5454;
+  font-size: 16px;
+}
+.userreminder{
+  margin-top: 10px;
   font-size: 14px;
 }
 .usernav{

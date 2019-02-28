@@ -5,94 +5,80 @@ Page({
    * 页面的初始数据
    */
   data: {
-    background: ['../../image/swiper/chah.jpg', '../../image/swiper/swiper2.jpg', '../../image/swiper/swiper3.jpg'],
-    nav: [{
-            name:"查看新铺",
-            icon:"../../image/icon/dianpu.png",
-            link:"../search/search",
-            opentype: "switchTab"
-          },
-          {
-            name: "求租信息",
-            icon: "../../image/icon/dianpu.png",
-            link: "../requestpage/requestpage",
-            opentype: "navigate"
-          },{
-            name: "我要找铺",
-            icon: "../../image/icon/dianpu.png",
-            link: "../seekform/seekform",
-            opentype: "navigate"
-          },{
-            name: "我要转铺",
-            icon: "../../image/icon/dianpu.png",
-            link: "../rentform/rentform",
-            opentype: "navigate"
-          }],
-    statistics: {
-        average: 5.45,
-        updown: "上涨",
-        percentage: "2.75%",
-        totaltoday: 369,
-        total: 34652,
-        totaluser: 55883
-    },
-    rentinform: [{
-        rentimg: "../../image/rent/rent1.jpg",
-        region: "条山街",
-        area: 200,
-        description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
-        price: 6000,
-        priceunit: "元/月",
-        taglist: ["位置优越", "开ktv", "开酒店"],
-        hot: "热门"
-      }, {
-        rentimg: "../../image/rent/rent1.jpg",
-        region: "条山街",
-        area: 200,
-        description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
-        price: 6000,
-        priceunit: "元/月",
-        taglist: ["位置优越", "开ktv", "开酒店"],
-        hot: "热门"
-      }, {
-        rentimg: "../../image/rent/rent1.jpg",
-        region: "条山街",
-        area: 200,
-        description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
-        price: 6000,
-        priceunit: "元/月",
-        taglist: ["位置优越", "开ktv", "开酒店"],
-        hot: "热门"
-      }, {
-        rentimg: "../../image/rent/rent1.jpg",
-        region: "条山街",
-        area: 200,
-        description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
-        price: 6000,
-        priceunit: "元/月",
-        taglist: ["位置优越", "开ktv", "开酒店"],
-        hot: "热门"
-      }, {
-        rentimg: "../../image/rent/rent1.jpg",
-        region: "条山街",
-        area: 200,
-        description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
-        price: 6000,
-        priceunit: "元/月",
-        taglist: ["位置优越", "开ktv", "开酒店"],
-        hot: "热门"
-      }]
+    loadingstatus: false,
+    pageheight: 0
   },
-  makeacall(e) {
-    wx.makePhoneCall({
-      phoneNumber: '0359 8888888'
+
+  gotUserAuthorize(){
+    this.setData({
+      loadingstatus: true
+    });
+    wx.login({
+      success: res => {
+        const code = res.code;//登录凭证
+        if (code) {
+          //2、调用获取用户信息接口
+          wx.getUserInfo({
+            success: res => {
+              //3.解密用户信息 获取unionId
+              wx.request({
+                url: 'https://lingtongzixun.cn/SAPP/decodeUserInfo',
+                method: 'post',
+                header: {
+                  'content-type': 'application/x-www-form-urlencoded'
+                },
+                data: { encryptedData: res.encryptedData, iv: res.iv, code: code },
+                success: function (data) {
+
+                  //4.解密成功后 获取自己服务器返回的结果
+                  if (data.data.wechatId) {
+                    wx.setStorage({
+                      key: 'userInfo',
+                      data: data.data
+                    });
+                    wx.switchTab({
+                      url: '/pages/home/home',
+                    })
+                  } else {
+                    console.log('解密失败')
+                  }
+
+                },
+                fail: function () {
+                  console.log('系统错误')
+                }
+              })
+            },
+            fail: () => {
+              console.log('获取用户信息失败')
+            }
+          })
+
+        } else {
+          console.log('获取用户登录态失败！' + r.errMsg)
+        }
+      }, fail: () => {
+        callback(false)
+      }
     })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    this.setData({
+      pageheight: wx.getSystemInfoSync().windowHeight
+    });
+    const that = this;
+    wx.getStorage({
+      key: 'userInfo',
+      success: function (res) {
+        console.log(res);
+        wx.switchTab({
+          url: '/pages/home/home',
+        })
+      },
+      fail: function (err) {
+        console.log(err)
+      }
+    })
   },
 
   /**
@@ -106,12 +92,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (typeof this.getTabBar === 'function' &&
-      this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: 0
-      })
-    }
+
   },
 
   /**
