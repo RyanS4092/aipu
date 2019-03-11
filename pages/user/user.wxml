@@ -1,5 +1,5 @@
 <!--pages/user/user.wxml-->
-<view class='greyback' style='height:{{pageheight}}px'>
+<view class='greyback'>
   <view class='userinfo'>
     <image class='userinfo-avatar' src="{{userInfo.wechatImg}}" mode="cover"></image>
     <view class='userinfo-right'>

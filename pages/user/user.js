@@ -92,16 +92,31 @@ Page({
             console.log(res);
             if (res.data == "alreadyCheckIn"){
               that.setData({
-                checkInStatus: 1,
                 loadingstatus: false
+              });
+              wx.showModal({
+                title: '提示',
+                content: '今天已经签到过啦',
+                showCancel: false
               })
             }else{
               that.setData({
-                checkInStatus: 2,
                 currentCoin:  res.data.coin,
                 loadingstatus: false
+              });
+              wx.showModal({
+                title: '提示',
+                content: '签到成功，铺币+1',
+                showCancel: false
               })
             }
+          },
+          fail: () => {
+            wx.showModal({
+              title: '提示',
+              content: '获取用户信息失败，请稍后重试',
+              showCancel: false
+            })
           }
         })
       }

@@ -8,9 +8,9 @@
     </view>
     <view class='formbar'>
       <text class='formtitles'>区域</text>
-      <picker name="region" bindchange="bindPickerChangeRegion" value="{{regionindex}}" range="{{region}}">
+      <picker name="region" bindchange="bindPickerChangeRegion" value="{{regionindex}}" range="{{regionrange}}">
         <view class="picker">
-          {{region[regionindex]}}
+          {{regionrange[regionindex]}}
         </view>
       </picker>
     </view>
@@ -23,8 +23,8 @@
       <input class='forminput' placeholder="单位：㎡" maxlength="6" type='number' name="area"></input>
     </view>
     <view class='formbar'>
-      <text class='formtitles'>价格</text>
-      <input name="price" class='forminput' placeholder="单位：元/月" maxlength="10" type='number'></input>
+      <text class='formtitles'>租金</text>
+      <input name="price" class='forminput' placeholder="单位：元/月(不填为面议)" maxlength="10" type='number'></input>
     </view>
     <view class='formbar'>
       <text class='formtitles'>付款周期</text>
@@ -36,24 +36,45 @@
     </view>
     <view class='formbar'>
       <text class='formtitles'>转让费</text>
-      <input name="transferfee" class='forminput' placeholder="单位：万元（没有填0）" maxlength="5" type='number'></input>
+      <input name="transferfee" class='forminput' placeholder="单位：万元(不填为无)" maxlength="5" type='number'></input>
     </view>
     <view class='formbar'>
       <text class='formtitles'>商铺定位</text>
-      <view class='selectlocation-wrap'>
+      <view class='selectlocation-wrap' bindtap='selectlocation'>
         <image wx:if="{{selectlocation}}" src='../../image/icon/success.png' class='success'></image>
-        <image src='../../image/icon/location.png' class='selectlocation' bindtap='selectlocation'></image>
+        <image src='../../image/icon/location.png' class='selectlocation'></image>
       </view>
     </view>
+    <view class='formbar'>
+      <text class='formtitles'>商铺特点</text>
+      <view class='specialties-select'>点击选择</view>
+    </view>
+    <checkbox-group class="specialties" bindchange="specialtiesSelected">
+      <label class="specialties-item" wx:for="{{specialties}}" wx:key="{{index}}">
+        <checkbox value="{{item.value}}" checked="{{item.checked}}"/>{{item.value}}
+      </label>
+    </checkbox-group>
     <view class='formbar'>
       <text class='formtitles'>是否上热门</text>
       <switch name="hot"></switch>
     </view>
     <view class='formreminder'>上热门需要消耗15铺币</view>
-    <textarea name="transferfee" class='textarea' placeholder="添加详情描述（140字内）" placeholder-style="color:#000;" />
+    <view class='textarea-wrap'>
+      <textarea name="description" class='textarea' placeholder="添加详情描述（140字内）" placeholder-style="color:#000;" />
+    </view>
     <cover-view class='submitbutton'>
       <button form-type='submit' class='submit' >提交转租信息</button>
     </cover-view>
   </form>
+  <view class='uploadimg'>
+    <view class='uploadimg-title'>店铺照片</view>
+    <view class='uploadimg-reminder'>上传更多店铺照片，获取更多店铺关注(上限9张)</view>
+    <view class='uploadarea'>
+       <view class='greyblock' wx:for="{{uploadimg}}" wx:key="{{index}}" bindtap='uploadimg' data-index="{{index}}">
+          <view wx:if="{{!item.uploadstatus}}" class='default'>+</view>
+          <image wx:if="{{item.uploadstatus}}" class='imguploaded' src='{{item.imgsrc}}'></image>
+       </view>
+    </view>
+  </view>
   <view style='height:80px;'></view>
 </view>

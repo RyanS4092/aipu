@@ -1,12 +1,12 @@
 <!--components/requestcomponent/requestcomponent.wxml-->
-<navigator class="requestinform" wx:for="{{requestinform}}" url="../requests/requests" wx:key="{{index}}">
+<navigator class="requestinform" wx:for="{{requestinform}}" url="../requests/requests?requestid={{item._id}}" wx:key="{{index}}">
   <view class='request-firstline'>
     <view class='request-title'>{{item.title}}</view>
     <view class='request-time'>{{item.time}}</view>
   </view>
   <view class='request-lists request-preferlocation'>优先选择：{{item.preferlocation}}</view>
-  <view class='request-lists request-area'>求租面积：{{item.area}}㎡</view>
-  <view class='request-lists request-budget'>租金预算：{{item.budget}}元/月</view>
+  <view class='request-lists request-area'>求租面积：{{item.area}}</view>
+  <view class='request-lists request-budget'>租金预算：{{item.budget}}/月</view>
   <view class='divider-request'></view>
 </navigator>
 

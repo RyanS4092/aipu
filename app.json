@@ -1,12 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/home/home",
-    "pages/form/form",
-    "pages/myform/myform",
-    "pages/allform/allform",
+    "pages/authorize/authorize",
     "pages/search/search",
-    "pages/userold/userold",
     "pages/user/user",
     "pages/collection/collection",
     "pages/rents/rents",
@@ -14,7 +10,7 @@
     "pages/requests/requests",
     "pages/history/history",
     "pages/about/about",
-    "pages/seekform/seekform",
+    "pages/requestform/requestform",
     "pages/rentform/rentform",
     "pages/rentmanagement/rentmanagement",
     "pages/requestmanagement/requestmanagement"
@@ -27,7 +23,7 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "pages/home/home",
+        "pagePath": "pages/index/index",
         "iconPath": "/image/tabbar/index_icon.png",
         "selectedIconPath": "/image/tabbar/index_icon_red.png",
         "text": "首页"

@@ -20,7 +20,7 @@ Page({
       price: 6000,
       priceunit: "元/月",
       taglist: ["位置优越", "开ktv", "开酒店"],
-      hot: "热门"
+      hot: true
     }, {
       rentimg: "../../image/rent/rent1.jpg",
       region: "条山街",
@@ -29,7 +29,7 @@ Page({
       price: 6000,
       priceunit: "元/月",
       taglist: ["位置优越", "开ktv", "开酒店"],
-      hot: "热门"
+      hot: true
     }, {
       rentimg: "../../image/rent/rent1.jpg",
       region: "条山街",
@@ -38,7 +38,7 @@ Page({
       price: 6000,
       priceunit: "元/月",
       taglist: ["位置优越", "开ktv", "开酒店"],
-      hot: "热门"
+      hot: true
     }, {
       rentimg: "../../image/rent/rent1.jpg",
       region: "条山街",
@@ -47,7 +47,7 @@ Page({
       price: 6000,
       priceunit: "元/月",
       taglist: ["位置优越", "开ktv", "开酒店"],
-      hot: "热门"
+      hot: true
     }, {
       rentimg: "../../image/rent/rent1.jpg",
       region: "条山街",
@@ -56,7 +56,7 @@ Page({
       price: 6000,
       priceunit: "元/月",
       taglist: ["位置优越", "开ktv", "开酒店"],
-      hot: "热门"
+      hot: true
     }],
     requestinform: [{
       title: "求租条山街火锅门面",

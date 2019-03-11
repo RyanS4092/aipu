@@ -5,29 +5,46 @@ Page({
    * 页面的初始数据
    */
   data: {
-    request: {
-      title: "求租条山街火锅门面",
-      preferlocation: "条山街",
-      area: "500~1000",
-      budget: "2000~10000",
-      time: "1小时前",
-      viewcount: 253,
-      plan: "开火锅店",
-      type: "店铺",
-      transferfee: "同行业可接受",
-      mobile: "13215475454"
-    }
+    request: {}
   },
   makeacall(e) {
     wx.makePhoneCall({
-      phoneNumber: '13215475454'
+      phoneNumber: '0359 8888888'
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const sentdata = {
+      requestid: options.requestid
+    }
+    const sentdatastringify = JSON.stringify(sentdata);
+    const that = this;
+    wx.request({
+      url: 'https://lingtongzixun.cn/SAPP/requestsinfo',
+      data: sentdatastringify,
+      header: {
+        'content-type': 'application/json'
+      },
+      method: 'POST',
+      success: function (res) {
+        that.setData({
+          request: res.data
+        });
+        const date = new Date(res.data.refreshTime);
+        const tolocal = date.toLocaleString();
+        that.setData({
+          'request.time': tolocal
+        })
+      },
+      fail: function (res) {
+        wx.showModal({
+          title: '提示',
+          content: '数据获取失败，请退出后重试',
+        })
+      }
+    });
   },
 
   /**

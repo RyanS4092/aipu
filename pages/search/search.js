@@ -19,52 +19,29 @@ Page({
       color: "#333333",
       fontsize: "14px"
   }],
-  rentinform: [{
-    rentimg: "../../image/rent/rent1.jpg",
-    region: "条山街",
-    area: 200,
-    description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
-    price: 6000,
-    priceunit: "元/月",
-    taglist: ["位置优越", "开ktv", "开酒店"],
-    hot: "热门"
-  }, {
-    rentimg: "../../image/rent/rent1.jpg",
-    region: "条山街",
-    area: 200,
-    description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
-    price: 6000,
-    priceunit: "元/月",
-    taglist: ["位置优越", "开ktv", "开酒店"],
-    hot: "热门"
-  }, {
-    rentimg: "../../image/rent/rent1.jpg",
-    region: "条山街",
-    area: 200,
-    description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
-    price: 6000,
-    priceunit: "元/月",
-    taglist: ["位置优越", "开ktv", "开酒店"]
-  }, {
-    rentimg: "../../image/rent/rent1.jpg",
-    region: "条山街",
-    area: 200,
-    description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
-    price: 6000,
-    priceunit: "元/月",
-    taglist: ["位置优越", "开ktv", "开酒店"]
-  }, {
-    rentimg: "../../image/rent/rent1.jpg",
-    region: "条山街",
-    area: 200,
-    description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
-    price: 6000,
-    priceunit: "元/月",
-    taglist: ["位置优越", "开ktv", "开酒店"]
-  }]
+  rentinform: []
   },
   onLoad: function (options) {
-
+    const that = this;
+    wx.request({
+      url: 'https://lingtongzixun.cn/SAPP/indexhot',
+      data: '',
+      header: {
+        'content-type': 'application/json'
+      },
+      method: 'POST',
+      success: function (res) {
+        that.setData({
+          rentinform: res.data
+        })
+      },
+      fail: function (res) {
+        wx.showModal({
+          title: '提示',
+          content: '数据获取失败，请退出后重试',
+        })
+      }
+    })
   },
   onReady: function () {
 

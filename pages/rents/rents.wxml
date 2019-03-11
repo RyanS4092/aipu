@@ -1,32 +1,34 @@
 <!--pages/rents/rents.wxml-->
 <swiper indicator-dots="{{false}}" autoplay="{{false}}" circular="{{false}}" vertical="{{false}}" interval="2000" duration="500" previous-margin="0px" next-margin="0px" bindchange='onSlideChangeEnd'>
-    <block wx:for="{{rent.rentimg}}" wx:key="*this">
+    <block wx:for="{{rent.uploadimg}}" wx:key="*this">
       <swiper-item>
         <view class='swiper-wrap'><image class="swiper-item" src='{{item}}'></image></view>
       </swiper-item>
     </block>
 </swiper>
 <view class='swiperbottom'>
-  <view class='numbering'>商品编号：{{rent.numbering}}</view>
+  <view class='numbering'>浏览次数：{{rent.views}}</view>
   <view class='swiperorder'>{{currentswiper}}/{{countrentimgs}}</view>
 </view>
 <view class='details-wrap'>
   <view class='title-line'>
-    <view wx:if="{{rent.hot}}" class='hot'>{{rent.hot}}</view>
+    <view wx:if="{{rent.hot}}" class='hot'>热门</view>
     <view class='title'>{{rent.title}}</view>
     <view style='clear:all;'></view>
   </view>
   <view class='taglist-wrap'>
-    <view wx:for="{{rent.taglist}}" wx:key="{{index}}" class='taglist'>{{item}}</view>
+    <view wx:for="{{rent.specialties}}" wx:key="{{index}}" class='taglist'>{{item}}</view>
   </view>
   <view class="divider-index" style='margin-top: 7px;'></view>
   <view class='details'>
     <view class="details-title">租金<span></span></view>
-    <view class='pricenumber'>{{rent.price}}<span class="priceunit">{{rent.priceunit}}</span><span class="paymentcycle">({{rent.paymentcycle}})</span></view>
+    <view wx:if="{{rent.price}}" class='pricenumber'>{{rent.price}}<span class="priceunit">元/月</span><span class="paymentcycle">({{rent.paymentcycle}})</span></view>
+    <view wx:if="{{!rent.price}}" class='pricenumber'>面议<span class="paymentcycle">({{rent.paymentcycle}})</span></view>
   </view>
   <view class='details'>
     <view class="details-title">转让费<span></span></view>
-    <view class='details-fee'>{{rent.transferfee}}</view>
+    <view wx:if="{{rent.transferfee}}" class='details-fee'>{{rent.transferfee}}</view>
+    <view wx:if="{{!rent.transferfee}}" class='details-fee'>无</view>
   </view>
   <view class='details'>
     <view class="details-title">面积<span></span></view>
@@ -48,8 +50,8 @@
 <map
   id="myMap"
   style="width: 100%; height: 200px;margin-top:15px;"
-  latitude="{{rent.maplocation.latitude}}"
-  longitude="{{rent.maplocation.longitude}}"
+  latitude="{{rent.mapinfo.latitude}}"
+  longitude="{{rent.mapinfo.longitude}}"
   markers="{{markers}}"
   show-location
   bindtap='mapClick'

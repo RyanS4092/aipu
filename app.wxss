@@ -6,6 +6,8 @@
 }
 .greyback{
   background-color: #f7f7f7;
+  width: 100%;
+  overflow: hidden;
 }
 .bottomspace{
   height: 48px;
@@ -33,6 +35,7 @@
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 999;
   display: flex;
   justify-content: center;
   align-items: center;

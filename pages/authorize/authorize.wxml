@@ -1,0 +1,13 @@
+<!--pages/index/index.wxml-->
+<view class='getuserinfo'>
+  <view class='image-wrap'>
+    <image src='../../image/icon/logo.png' class='getuserinfo-image'></image>
+  </view>
+  <view class='getuserinfo-title'>灵通商铺申请获取你的用户信息</view>
+  <view class='getuserinfo-buttons'>
+      <button open-type='getUserInfo' class='getuserinfo-authorize' bindgetuserinfo="gotUserAuthorize" type='primary'>授权</button>
+  </view>
+</view>
+<view class='loading' wx:if="{{loadingstatus}}" style='height:{{pageheight}}px'>
+  <image class='loadingimg' src='../../image/icon/loading.gif'></image>
+</view>

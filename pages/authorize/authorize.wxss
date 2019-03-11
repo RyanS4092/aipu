@@ -1,0 +1,30 @@
+/* pages/index/index.wxss */
+.getuserinfo{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.image-wrap{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.getuserinfo-image{
+  width: 120px;
+  height: 120px;
+}
+.getuserinfo-title{
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+.getuserinfo-buttons{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.getuserinfo-authorize{
+  width: 70%;
+  margin-top: 15px;
+}

@@ -1,21 +1,21 @@
 <!--components/rentlist/rentlist.wxml-->
-<navigator open-type='navigate' class="rentinform" wx:for="{{rentinform}}" url="../rents/rents" wx:key="{{index}}">
+<navigator open-type='navigate' class="rentinform" wx:for="{{rentinform}}" url="../rents/rents?rentid={{item._id}}" wx:key="{{index}}">
   <view class='rentinform-wrap'>
     <view class='rentinform-left'>
-      <image class='rentinform-img' src='{{item.rentimg}}'></image>
-      <view wx:if="{{item.hot}}" class='rentinform-hot'>{{item.hot}}</view>
+      <image class='rentinform-img' src='{{item.uploadimg[0]}}'></image>
+      <view wx:if="{{item.hot}}" class='rentinform-hot'>热门</view>
     </view>
     <view class='rentinform-right'>
-      <view class='rentinform-firstline'>{{item.region}} | {{item.area}}㎡</view>
+      <view class='rentinform-firstline'>{{item.title}}</view>
       <view class='rentinform-secondline'>
         <view class='rentinform-description-wrap'>
-          <view class='rentinform-description'>{{item.description}}</view>
-          <view class='rentinform-dots'>...</view>
+          <view class='rentinform-description'>{{item.region}} | {{item.area}}㎡</view>
         </view>
-        <view class='rentinform-price'>{{item.price}}{{item.priceunit}}</view>
+        <view wx:if="{{item.price}}" class='rentinform-price'>{{item.price}}元/月</view>
+        <view wx:if="{{!item.price}}" class='rentinform-price'>面议</view>
       </view>
       <view class='rentinform-thirdline'>
-        <view wx:for="{{item.taglist}}" class='rentinform-thirdline-item' wx:key="{{index}}">
+        <view wx:for="{{item.specialties}}" class='rentinform-thirdline-item' wx:key="{{index}}">
           <view class='rentinform-tags'>{{item}}</view>
         </view>
       </view>

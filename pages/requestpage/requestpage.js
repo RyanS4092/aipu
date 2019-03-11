@@ -5,56 +5,34 @@ Page({
    * 页面的初始数据
    */
   data: {
-    requestinform:[{
-      title: "求租条山街火锅门面",
-      preferlocation: "条山街",
-      area: "500~1000",
-      budget: "2000~10000",
-      time: "1小时前"
-    },{
-      title: "求租条山街火锅门面",
-      preferlocation: "条山街",
-      area: "500~1000",
-      budget: "2000~10000",
-      time: "1小时前"
-    },{
-      title: "求租条山街火锅门面",
-      preferlocation: "条山街",
-      area: "500~1000",
-      budget: "2000~10000",
-      time: "1小时前"
-    },{
-      title: "求租条山街火锅门面",
-      preferlocation: "条山街",
-      area: "500~1000",
-      budget: "2000~10000",
-      time: "1小时前"
-    },{
-      title: "求租条山街火锅门面",
-      preferlocation: "条山街",
-      area: "500~1000",
-      budget: "2000~10000",
-      time: "1小时前"
-    },{
-      title: "求租条山街火锅门面",
-      preferlocation: "条山街",
-      area: "500~1000",
-      budget: "2000~10000",
-      time: "1小时前"
-    },{
-      title: "求租条山街火锅门面",
-      preferlocation: "条山街",
-      area: "500~1000",
-      budget: "2000~10000",
-      time: "1小时前"
-    }]
+    requestinform:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const that = this;
+    wx.request({
+      url: 'https://lingtongzixun.cn/SAPP/requestpage',
+      data: '',
+      header: {
+        'content-type': 'application/json'
+      },
+      method: 'POST',
+      success: function (res) {
+        console.log(res);
+        that.setData({
+          requestinform: res.data
+        })
+      },
+      fail: function (res) {
+        wx.showModal({
+          title: '提示',
+          content: '数据获取失败，请退出后重试',
+        })
+      }
+    })
   },
 
   /**
