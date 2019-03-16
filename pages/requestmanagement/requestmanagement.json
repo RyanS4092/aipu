@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "myrequests": "/components/myrequests/myrequests"
+  }
+}
