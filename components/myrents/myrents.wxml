@@ -1,0 +1,19 @@
+<!--components/myrents/myrents.wxml-->
+<navigator open-type='navigate' class="rentinform" wx:for="{{myrents}}" url="../rents/rents?rentid={{item._id}}" wx:key="{{index}}">
+  <view class='rentinform-wrap'>
+    <view class='rentinform-left'>
+      <image class='rentinform-img' src='{{item.uploadimg[0]}}'></image>
+      <view wx:if="{{item.hot}}" class='rentinform-hot'>热门</view>
+    </view>
+    <view class='rentinform-right'>
+      <view class='rentinform-firstline'>{{item.title}}</view>
+      <view class='rentinform-timeShow'>{{item.timeShow}}</view>
+      <view class='rentinform-buttons'>
+        <button catchtap='toHot' hover-class='rentinform-buttons-hover' hover-stop-propagation="{{true}}" class='rentinform-buttons-items'>登上热门</button>
+        <button catchtap='toRefresh' hover-class='rentinform-buttons-hover' hover-stop-propagation="{{true}}" class='rentinform-buttons-items'>刷新信息</button>
+        <button catchtap='toDelete' hover-class='rentinform-buttons-hover' hover-stop-propagation="{{true}}" class='rentinform-buttons-items'>删除信息</button>
+      </view>
+    </view>
+  </view>
+  <view class='divider-rentlist'></view>
+</navigator>

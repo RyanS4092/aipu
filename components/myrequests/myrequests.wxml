@@ -1,0 +1,12 @@
+<!--components/myrequests/myrequests.wxml-->
+<navigator class="requestinform" wx:for="{{myrequests}}" url="../requests/requests?requestid={{item._id}}" wx:key="{{index}}">
+  <view class='request-firstline'>
+    <view class='request-title'>{{item.title}}</view>
+  </view>
+  <view class='request-timeShow'>{{item.timeShow}}</view>
+  <view class='request-buttons'>
+    <button catchtap='toHot' hover-class='request-buttons-hover' hover-stop-propagation="{{true}}" class='request-buttons-items'>刷新信息</button>
+    <button catchtap='toRefresh' hover-class='request-buttons-hover' hover-stop-propagation="{{true}}" class='request-buttons-items'>删除信息</button>
+  </view>
+  <view class='divider-request'></view>
+</navigator>

@@ -12,6 +12,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    });
     const that = this;
     wx.request({
       url: 'https://lingtongzixun.cn/SAPP/requestpage',
@@ -21,16 +25,17 @@ Page({
       },
       method: 'POST',
       success: function (res) {
-        console.log(res);
         that.setData({
           requestinform: res.data
-        })
+        });
+        wx.hideLoading();
       },
       fail: function (res) {
+        wx.hideLoading();
         wx.showModal({
           title: '提示',
           content: '数据获取失败，请退出后重试',
-        })
+        });
       }
     })
   },

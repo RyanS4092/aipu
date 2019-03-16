@@ -120,3 +120,77 @@ swiper{
 .tab-bar-item{
   display: none;
 }
+.rentsbar{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background: white;
+  display: flex;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.rentsbar-border{
+  background-color: rgba(0, 0, 0, 0.33);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1px;
+  transform: scaleY(0.5);
+}
+.rentsbar-collection{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 20%;
+}
+.rentsbar-collection cover-image{
+  width: 24px;
+  height: 24px;
+}
+.rentsbar-collection cover-view{
+  font-size: 10px;
+}
+.rentsbar-share{
+  width: 40%;
+}
+.rentsbar-share-button{
+  width: 100%;
+  height: 100%;
+  background-color: #e9f0e8;
+  color: #00c800;
+  border: none;
+  border-radius: 0;
+}
+.rentsbar-share-inner{
+  width: 100%;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.rentsbar-share cover-image{
+  width: 24px;
+  height: 24px;
+}
+.rentsbar-share cover-view{
+  font-size: 14px;
+}
+.rentsbar-call{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  background-color: #dd5454;
+  color: #fff;
+}
+.rentsbar-call cover-image{
+  width: 24px;
+  height: 24px;
+}
+.rentsbar-call cover-view{
+  font-size: 14px;
+}

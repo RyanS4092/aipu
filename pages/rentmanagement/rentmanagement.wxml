@@ -1,2 +1,11 @@
 <!--pages/rentmanagement/rentmanagement.wxml-->
-<text>pages/rentmanagement/rentmanagement.wxml</text>
+<view class='bar'>
+  <view wx:for="{{bar}}" class='bar-list' wx:key="{{index}}" bindtap='barclick' data-index="{{index}}">
+    <view wx:if="{{item.status}}" class='bar-text-red'>{{item.name}}</view>
+    <view wx:elif="!{{item.status}}" class='bar-text'>{{item.name}}</view>
+    <view wx:if="{{item.status}}" class='bar-red'></view>
+    <view wx:elif="!{{item.status}}" class='bar-grey'></view>
+  </view>
+</view>
+<myrents wx:if="{{bar[0].status}}" myrents="{{myunauthRents}}"></myrents>
+<myrents wx:if="{{bar[1].status}}" myrents="{{myauthRents}}"></myrents>

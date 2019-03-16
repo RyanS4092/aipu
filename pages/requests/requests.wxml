@@ -1,7 +1,7 @@
 <!--pages/requests/requests.wxml-->
 <view class='request'>
   <view class='request-title'>{{request.title}}</view>
-  <view class='request-time'>{{request.time}}　|　{{request.views}}次浏览</view>
+  <view class='request-time'>{{request.timeShow}}　|　{{request.views}}次浏览</view>
   <view class='greybar'></view>
   <view class='request-lists request-area'>求租面积：<span class="red">{{request.area}}</span></view>
   <view class='request-lists request-budget'>租金预算：<span class="red">{{request.budget}}/月</span></view>
@@ -10,7 +10,23 @@
   <view class='request-lists request-transferfee'>是否接受转让费：<span wx:if="{{}}" class="black">是</span><span class="black">否</span></view>
   <view class='greybar'></view>
 </view>
-<cover-view class='call' bindtap='makeacall'>
-  <cover-image src='../../image/icon/call.png'></cover-image>
-  <cover-view>0359 8888888</cover-view>
+<cover-view class='requestsbar'>
+  <cover-view class='requestsbar-collection' bindtap='collection'>
+    <cover-image wx:if="{{!collectionstatus}}" src='../../image/icon/collection.png'></cover-image>
+    <cover-image wx:if="{{collectionstatus}}" src='../../image/icon/collectiontrue.png'></cover-image>
+    <cover-view wx:if="{{!collectionstatus}}">收藏</cover-view>
+    <cover-view wx:if="{{collectionstatus}}" style='color:#dd5454'>收藏</cover-view>
   </cover-view>
+  <cover-view class='requestsbar-share'>
+    <button open-type='share' class='requestsbar-share-button' hover-class='none'>
+      <cover-view class='requestsbar-share-inner'>
+        <cover-image src='../../image/icon/wechat.png'></cover-image>
+        <cover-view>分享给好友</cover-view>
+      </cover-view>
+    </button>
+  </cover-view>
+  <cover-view class='requestsbar-call' data-mobile="{{requestsmobile}}" bindtap='callrequests'>
+    <cover-image src='../../image/icon/call.png'></cover-image>
+    <cover-view>联系我们</cover-view>
+  </cover-view>
+</cover-view>
