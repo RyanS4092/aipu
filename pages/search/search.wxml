@@ -2,15 +2,35 @@
 <view class='searchbar'>
   <view class='searchbar-click'>
     <image src='../../image/icon/searchgrey.png' class='searchbar-icon'></image>
-    <form class='searchbar-text'><input name="input" placeholder="点击搜索意向的位置、业态" /></form>
+    <form class='searchbar-text'>
+      <input name="input" placeholder="点击搜索意向的位置、业态" bindconfirm="searchsubmit" />
+    </form>
   </view>
   <image src='../../image/icon/callgrey.png' class='makeacall' bindtap='makeacall'></image>
 </view>
 <view class='selectlist-wrap'>
   <view wx:for="{{selectlist}}" class='selectlist' wx:key="{{index}}">
-    <view class='selectlist-text' style='font-size:{{item.fontsize}};color:{{item.color}}'>{{item.name}}▼</view>
+    <view class='selectlist-text' bindtap='selectlist' data-item="{{index}}" style='font-size:{{item.fontsize}};color:{{item.color}}'>{{item.name}}▼</view>
+    <view class='search-item' wx:if="{{item.status}}">
+      <view class='search-item-wrap'>
+        <view wx:for="{{item.list}}" class='search-item-list' wx:key="{{index}}" bindtap='select' data-index="{{index}}">
+          <view class='search-item-unselected' wx:if="{{!item.status}}">{{item.name}}</view>
+          <view class='search-item-selected' wx:if="{{item.status}}">{{item.name}}</view>
+        </view>
+      </view>
+      <view class='search-item-dividerbar'></view>
+      <view class='search-item-submit' bindtap='selectSubmit'>确定</view>
+    </view>
   </view>
 </view>
-<view class='divider-index'></view>
+<view class='divider-search'></view>
+<view style='height:102px;'></view>
 <rentlist rentinform="{{rentinform}}"></rentlist>
+<view wx:if="{{!searchresults}}">
+  <view class='noresults'>该条件下暂无铺源信息</view>
+  <view class='callus'>
+    <image src='../../image/icon/call.png' class='callusimg'></image>
+    <view class='callustext' bindtap='makeacall'>帮我找铺</view>
+  </view>
+</view>
 <view class='bottomspace'></view>

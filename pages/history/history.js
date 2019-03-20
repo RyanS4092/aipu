@@ -12,95 +12,8 @@ Page({
       name: "求租",
       status: false
     }],
-    rentinform: [{
-      rentimg: "../../image/rent/rent1.jpg",
-      region: "条山街",
-      area: 200,
-      description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
-      price: 6000,
-      priceunit: "元/月",
-      taglist: ["位置优越", "开ktv", "开酒店"],
-      hot: true
-    }, {
-      rentimg: "../../image/rent/rent1.jpg",
-      region: "条山街",
-      area: 200,
-      description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
-      price: 6000,
-      priceunit: "元/月",
-      taglist: ["位置优越", "开ktv", "开酒店"],
-      hot: true
-    }, {
-      rentimg: "../../image/rent/rent1.jpg",
-      region: "条山街",
-      area: 200,
-      description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
-      price: 6000,
-      priceunit: "元/月",
-      taglist: ["位置优越", "开ktv", "开酒店"],
-      hot: true
-    }, {
-      rentimg: "../../image/rent/rent1.jpg",
-      region: "条山街",
-      area: 200,
-      description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
-      price: 6000,
-      priceunit: "元/月",
-      taglist: ["位置优越", "开ktv", "开酒店"],
-      hot: true
-    }, {
-      rentimg: "../../image/rent/rent1.jpg",
-      region: "条山街",
-      area: 200,
-      description: "此地适宜开宾馆开酒店开饭店开ktv开洗车店开服装店",
-      price: 6000,
-      priceunit: "元/月",
-      taglist: ["位置优越", "开ktv", "开酒店"],
-      hot: true
-    }],
-    requestinform: [{
-      title: "求租条山街火锅门面",
-      preferlocation: "条山街",
-      area: "500~1000",
-      budget: "2000~10000",
-      time: "1小时前"
-    }, {
-      title: "求租条山街火锅门面",
-      preferlocation: "条山街",
-      area: "500~1000",
-      budget: "2000~10000",
-      time: "1小时前"
-    }, {
-      title: "求租条山街火锅门面",
-      preferlocation: "条山街",
-      area: "500~1000",
-      budget: "2000~10000",
-      time: "1小时前"
-    }, {
-      title: "求租条山街火锅门面",
-      preferlocation: "条山街",
-      area: "500~1000",
-      budget: "2000~10000",
-      time: "1小时前"
-    }, {
-      title: "求租条山街火锅门面",
-      preferlocation: "条山街",
-      area: "500~1000",
-      budget: "2000~10000",
-      time: "1小时前"
-    }, {
-      title: "求租条山街火锅门面",
-      preferlocation: "条山街",
-      area: "500~1000",
-      budget: "2000~10000",
-      time: "1小时前"
-    }, {
-      title: "求租条山街火锅门面",
-      preferlocation: "条山街",
-      area: "500~1000",
-      budget: "2000~10000",
-      time: "1小时前"
-    }]
+    rentinform: [],
+    requestinform: []
   },
   barclick(e){
     var index = e.currentTarget.dataset.index;
@@ -118,7 +31,119 @@ Page({
     
   },
   onLoad: function (options) {
-
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    });
+    const that = this;
+    const historyid = {
+      historyRents: [],
+      historyRequests: []
+    }
+    wx.getStorage({
+      key: 'historyRents',
+      success: function (rentsid) {
+        console.log(rentsid);
+        historyid.historyRents = rentsid.data;
+        wx.getStorage({
+          key: 'historyRequests',
+          success: function (requestsid) {
+            historyid.historyRequests = requestsid.data;
+            console.log(historyid);
+            wx.request({
+              url: 'https://lingtongzixun.cn/SAPP/myhistory',
+              data: historyid,
+              header: {
+                'content-type': 'application/json'
+              },
+              method: 'POST',
+              success: function (res) {
+                console.log(res.data);
+                that.setData({
+                  rentinform: res.data.rentinform,
+                  requestinform: res.data.requestinform
+                });
+                wx.hideLoading();
+              },
+              fail: function (res) {
+                wx.hideLoading();
+                wx.showModal({
+                  title: '提示',
+                  content: '数据获取失败，请退出后重试',
+                })
+              }
+            })
+          },
+          fail: function(){
+            console.log(historyid);
+            wx.request({
+              url: 'https://lingtongzixun.cn/SAPP/myhistory',
+              data: historyid,
+              header: {
+                'content-type': 'application/json'
+              },
+              method: 'POST',
+              success: function (res) {
+                console.log(res.data);
+                that.setData({
+                  rentinform: res.data.rentinform,
+                  requestinform: res.data.requestinform
+                });
+                wx.hideLoading();
+              },
+              fail: function (res) {
+                wx.hideLoading();
+                wx.showModal({
+                  title: '提示',
+                  content: '数据获取失败，请退出后重试',
+                })
+              }
+            })
+          }
+        })
+      },
+      fail: function () {
+        wx.getStorage({
+          key: 'historyRequests',
+          success: function (requestsid) {
+            historyid.historyRequests = requestsid.data;
+            console.log(historyid);
+            wx.request({
+              url: 'https://lingtongzixun.cn/SAPP/myhistory',
+              data: historyid,
+              header: {
+                'content-type': 'application/json'
+              },
+              method: 'POST',
+              success: function (res) {
+                console.log(res.data);
+                that.setData({
+                  rentinform: res.data.rentinform,
+                  requestinform: res.data.requestinform
+                });
+                wx.hideLoading();
+              },
+              fail: function (res) {
+                wx.hideLoading();
+                wx.showModal({
+                  title: '提示',
+                  content: '数据获取失败，请退出后重试',
+                  showCancel: false
+                })
+              }
+            })
+          },
+          fail: function (res) { 
+            wx.hideLoading();
+            wx.showModal({
+              title: '提示',
+              content: '没有浏览记录',
+              showCancel: false
+            })
+           },
+        })
+      }
+    })
   },
 
   /**

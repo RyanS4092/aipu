@@ -151,13 +151,36 @@ Page({
         });
       }
     })
+    wx.getStorage({
+      key: 'historyRents',
+      success: function (res) {
+        const history = res.data;
+        console.log(history);
+        const check = history.indexOf(options.rentid);
+        console.log(check);
+        if (check === -1) {
+          history.unshift(options.rentid);
+          wx.setStorage({
+            key: 'historyRents',
+            data: history,
+          })
+        }
+      },
+      fail: function () {
+        const newhistory = [];
+        newhistory.unshift(options.rentid);
+        console.log(newhistory);
+        wx.setStorage({
+          key: 'historyRents',
+          data: newhistory,
+        })
+      }
+    })
   },
 
   onReady: function () {
-
   },
 
   onShow: function () {
-
   }
 })

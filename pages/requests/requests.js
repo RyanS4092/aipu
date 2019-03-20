@@ -122,13 +122,35 @@ Page({
         });
       }
     })
+    wx.getStorage({
+      key: 'historyRequests',
+      success: function (res) {
+        const history = res.data;
+        const check = history.indexOf(options.requestid);
+        if(check === -1){
+          history.unshift(options.rentid);
+          wx.setStorage({
+            key: 'historyRequests',
+            data: history,
+          })
+        }
+      },
+      fail: function () {
+        const newhistory = [];
+        newhistory.unshift(options.requestid);
+        wx.setStorage({
+          key: 'historyRequests',
+          data: newhistory,
+        })
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**

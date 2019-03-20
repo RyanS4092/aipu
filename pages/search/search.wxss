@@ -1,8 +1,15 @@
 /* pages/search/search.wxss */
 .searchbar{
-  width: 87%;
-  height: 20px;
-  padding: 20px 20px 0 20px;
+  width: 88vw;
+  height: 60px;
+  padding-top: 10px;
+  padding-left: 4vw;
+  padding-right: 8vw;
+  position: fixed;
+  top: 0;
+  left: 0; 
+  z-index: 999;
+  background-color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,7 +18,7 @@
   background-color: #f0f0f0;
   padding: 5px 10px;
   display: flex;
-  width: 70vw;
+  width: 73vw;
   height: 18px;
   border-radius: 5px;
   align-items: center;
@@ -31,7 +38,91 @@
   height: 18px;
 }
 .selectlist-wrap{
-  padding: 20px 20px 10px;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  padding-left: 4.5vw;
+  padding-right: 7.5vw;
+  padding-top: 10px;
+  width: 88vw;
+  height: 30px;
+  z-index: 999;
+  background-color: #fff;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+}
+.selectlist{
+  height: 15px;
+}
+.divider-search{
+  width: 100%;
+  height: 1px;
+  background-color: #e5e5e5;
+  position: fixed;
+  top: 100px;
+  left: 0; 
+  z-index: 999;
+}
+.noresults{
+  padding: 15px;
+  text-align: center;
+}
+.callus{
+  width: 90vw;
+  margin-left: 5vw;
+  height: 35px;
+  background-color: #dd5454;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.callusimg{
+  width: 20px;
+  height: 20px;
+}
+.callustext{
+  color: #fff;
+}
+.search-item{
+  width: 93vw;
+  padding: 0 3.5vw;
+  background-color: #fff;
+  position: fixed;
+  top: 101px;
+  left: 0;
+  z-index: 999;
+}
+.search-item-wrap{
+  display: flex;
+  flex-wrap: wrap;
+}
+.search-item-list{
+  width: 26vw;
+  font-size: 12px;
+  border: solid 1px #e5e5e5;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 2px;
+  margin-top: 7px;
+  margin-right: 4vw;
+}
+.search-item-selected{
+  color: #dd5454;
+}
+.search-item-dividerbar{
+  width: 88vw;
+  margin-top: 10px;
+  height: 1px;
+  background-color: #e5e5e5;
+}
+.search-item-submit{
+  width: 26vw;
+  margin-left: 62vw;
+  padding: 8px 0;
+  font-size: 12px;
+  color: #fff;
+  background-color: #dd5454;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
