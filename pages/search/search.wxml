@@ -19,7 +19,10 @@
         </view>
       </view>
       <view class='search-item-dividerbar'></view>
-      <view class='search-item-submit' bindtap='selectSubmit'>确定</view>
+      <view class='search-buttons'>
+        <view class='search-item-clearall' bindtap='clearall'>清除所有条件</view>
+        <view class='search-item-submit' bindtap='selectSubmit'>确定</view>
+      </view>
     </view>
   </view>
 </view>

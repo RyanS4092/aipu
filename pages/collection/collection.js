@@ -52,7 +52,6 @@ Page({
           },
           method: 'POST',
           success: function (res) {
-            console.log(res.data);
             that.setData({
               rentinform: res.data.rentinform,
               requestinform: res.data.requestinform

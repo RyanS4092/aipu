@@ -1,4 +1,6 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "hotpaypopup": "/components/hotpaypopup/hotpaypopup"
+  }
 }

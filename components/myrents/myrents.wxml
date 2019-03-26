@@ -9,11 +9,12 @@
       <view class='rentinform-firstline'>{{item.title}}</view>
       <view class='rentinform-timeShow'>{{item.timeShow}}</view>
       <view class='rentinform-buttons'>
-        <button catchtap='toHot' hover-class='rentinform-buttons-hover' hover-stop-propagation="{{true}}" class='rentinform-buttons-items'>登上热门</button>
-        <button catchtap='toRefresh' hover-class='rentinform-buttons-hover' hover-stop-propagation="{{true}}" class='rentinform-buttons-items'>刷新信息</button>
+        <button catchtap='toHot' data-rentid='{{item._id}}' data-hot="{{item.hot}}" hover-class='rentinform-buttons-hover' hover-stop-propagation="{{true}}" class='rentinform-buttons-items'>登上热门</button>
+        <button catchtap='toRefresh' data-rentid='{{item._id}}' hover-class='rentinform-buttons-hover' hover-stop-propagation="{{true}}" class='rentinform-buttons-items'>刷新信息</button>
         <button catchtap='toDelete' hover-class='rentinform-buttons-hover' hover-stop-propagation="{{true}}" class='rentinform-buttons-items'>删除信息</button>
       </view>
     </view>
   </view>
   <view class='divider-rentlist'></view>
 </navigator>
+<hotpaypopup rentid="{{currentrentid}}" bindcancel="onCancel" pageheight="{{pageheight}}" wx:if="{{hotpay}}"></hotpaypopup>

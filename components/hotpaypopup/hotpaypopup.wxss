@@ -1,0 +1,52 @@
+/* components/hotpaypopup/hotpaypopup.wxss */
+.greywrap{
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.whiteback{
+  width: 60vw;
+  height: 220px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.pop-title{
+  font-size: 18px;
+  text-align: center;
+  margin-top: 10px;
+}
+.pop-checkitem{
+  font-size: 14px;
+  padding: 7px 0 0 10px;
+}
+.buttons{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.cancel{
+  width: 40%;
+  text-align: center;
+  font-size: 14px;
+  border: solid 1px #e5e5e5;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-right: 5%;
+}
+.confirm{
+  width: 40%;
+  text-align: center;
+  font-size: 14px;
+  background-color: #09bb07;
+  color: #fff;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}

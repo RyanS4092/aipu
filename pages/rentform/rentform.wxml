@@ -76,5 +76,6 @@
        </view>
     </view>
   </view>
+  <hotpaypopup storeinfo="{{storeinfo}}" bindcancel="onCancel" pageheight="{{pageheight}}" wx:if="{{hotpay}}"></hotpaypopup>
   <view style='height:80px;'></view>
 </view>

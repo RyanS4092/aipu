@@ -60,7 +60,6 @@ Page({
            },
            method: 'POST',
            success: function (res) {
-              console.log(res.data);
               if (res.data == "collection success"){
                 that.setData({
                   collectionstatus: true
@@ -155,9 +154,7 @@ Page({
       key: 'historyRents',
       success: function (res) {
         const history = res.data;
-        console.log(history);
         const check = history.indexOf(options.rentid);
-        console.log(check);
         if (check === -1) {
           history.unshift(options.rentid);
           wx.setStorage({
@@ -169,7 +166,6 @@ Page({
       fail: function () {
         const newhistory = [];
         newhistory.unshift(options.rentid);
-        console.log(newhistory);
         wx.setStorage({
           key: 'historyRents',
           data: newhistory,

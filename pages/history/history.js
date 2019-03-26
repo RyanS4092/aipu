@@ -43,13 +43,11 @@ Page({
     wx.getStorage({
       key: 'historyRents',
       success: function (rentsid) {
-        console.log(rentsid);
         historyid.historyRents = rentsid.data;
         wx.getStorage({
           key: 'historyRequests',
           success: function (requestsid) {
             historyid.historyRequests = requestsid.data;
-            console.log(historyid);
             wx.request({
               url: 'https://lingtongzixun.cn/SAPP/myhistory',
               data: historyid,
@@ -58,7 +56,6 @@ Page({
               },
               method: 'POST',
               success: function (res) {
-                console.log(res.data);
                 that.setData({
                   rentinform: res.data.rentinform,
                   requestinform: res.data.requestinform
@@ -75,7 +72,6 @@ Page({
             })
           },
           fail: function(){
-            console.log(historyid);
             wx.request({
               url: 'https://lingtongzixun.cn/SAPP/myhistory',
               data: historyid,
@@ -84,7 +80,6 @@ Page({
               },
               method: 'POST',
               success: function (res) {
-                console.log(res.data);
                 that.setData({
                   rentinform: res.data.rentinform,
                   requestinform: res.data.requestinform
@@ -107,7 +102,6 @@ Page({
           key: 'historyRequests',
           success: function (requestsid) {
             historyid.historyRequests = requestsid.data;
-            console.log(historyid);
             wx.request({
               url: 'https://lingtongzixun.cn/SAPP/myhistory',
               data: historyid,
@@ -116,7 +110,6 @@ Page({
               },
               method: 'POST',
               success: function (res) {
-                console.log(res.data);
                 that.setData({
                   rentinform: res.data.rentinform,
                   requestinform: res.data.requestinform

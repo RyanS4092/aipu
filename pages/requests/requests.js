@@ -29,7 +29,6 @@ Page({
             collectionstatus: that.data.collectionstatus
          };
          const sentids = JSON.stringify(ids);
-         console.log(sentids);
          wx.request({
            url: 'https://lingtongzixun.cn/SAPP/requestCollect',
            data: ids,
@@ -38,7 +37,6 @@ Page({
            },
            method: 'POST',
            success: function (res) {
-              console.log(res.data);
               if (res.data == "collection success"){
                 that.setData({
                   collectionstatus: true
@@ -109,7 +107,6 @@ Page({
               request: res.data.requestinfo,
               collectionstatus: res.data.collectionstatus
             });
-            console.log(that.data)
             wx.hideLoading();
           },
           fail: function (res) {

@@ -7,5 +7,5 @@
     <view wx:elif="!{{item.status}}" class='bar-grey'></view>
   </view>
 </view>
-<myrents wx:if="{{bar[0].status}}" myrents="{{myunauthRents}}"></myrents>
-<myrents wx:if="{{bar[1].status}}" myrents="{{myauthRents}}"></myrents>
+<myrents wx:if="{{bar[0].status}}" pageheight="{{pageheight}}" myrents="{{myunauthRents}}"></myrents>
+<myrents wx:if="{{bar[1].status}}" pageheight="{{pageheight}}" myrents="{{myauthRents}}"></myrents>

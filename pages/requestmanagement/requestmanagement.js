@@ -69,7 +69,6 @@ Page({
               myauthRequests: authRequests,
               myunauthRequests: unauthRequests
             });
-            console.log(that.data);
             wx.hideLoading();
           },
           fail: function (res) {
@@ -96,7 +95,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**

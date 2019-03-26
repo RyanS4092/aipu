@@ -13,7 +13,8 @@
     "pages/requestform/requestform",
     "pages/rentform/rentform",
     "pages/rentmanagement/rentmanagement",
-    "pages/requestmanagement/requestmanagement"
+    "pages/requestmanagement/requestmanagement",
+    "pages/charge/charge"
   ],
   "tabBar": {
     "custom": true,
@@ -47,5 +48,10 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息仅用于的店铺位置的展示"
+    }
   }
 }

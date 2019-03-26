@@ -1,0 +1,15 @@
+<!--components/hotpaypopup/hotpaypopup.wxml-->
+<view class='greywrap' style='height:{{pageheight}}px'>
+  <view class='whiteback'>
+    <view class='pop-title'>选择热门天数</view>
+    <radio-group class="radio-group" bindchange="radioChange">
+      <radio class="pop-checkitem" wx:for-items="{{popCheckitem}}" wx:key="name" value="{{item.value}}" data-coins='{{item.coins}}' checked="{{item.checked}}"> 
+        <text>{{item.name}}</text>
+      </radio>
+    </radio-group>
+    <view class='buttons'>
+      <view class='cancel' bindtap="cancel">取消</view>
+      <view class='confirm' data-storeinfo="{{storeinfo}}" data-rentid='{{rentid}}' bindtap='hotpay'>确定</view>
+    </view>
+  </view>
+</view>

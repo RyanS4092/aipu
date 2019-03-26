@@ -13,7 +13,8 @@ Page({
       status: false
     }],
     myauthRents: [],
-    myunauthRents: []
+    myunauthRents: [],
+    pageheight: 0
   },
   barclick(e) {
     var index = e.currentTarget.dataset.index;
@@ -95,7 +96,9 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.setData({
+      pageheight: wx.getSystemInfoSync().windowHeight
+    })
   },
 
   /**

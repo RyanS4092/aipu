@@ -77,7 +77,6 @@ Page({
               transferfee: formvalue.transferfee
             }
             const requestinfoStringify = JSON.stringify(requestinfo);
-            console.log(requestinfoStringify);
             wx.request({
               url: 'https://lingtongzixun.cn/SAPP/requestformsubmit',
               method: 'post',

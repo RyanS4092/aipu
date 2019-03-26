@@ -75,7 +75,9 @@ Page({
     {
       imgsrc: null,
       uploadstatus: false
-    }]
+    }],
+    hotpay: false,
+    storeinfo: null
   },
   bindPickerChangeRegion(e) {
     this.setData({
@@ -92,10 +94,12 @@ Page({
       specialtiesSelected: e.detail.value
     })
   },
+  onCancel(e) {
+    this.setData({
+      hotpay: false
+    })
+  },
   rentSubmit(e) {
-    wx.showLoading({
-      title: '信息提交中',
-    });
     const that = this;
     const formvalue = e.detail.value;
     const mapinfostatus = this.data.mapinfo.latitude;
@@ -109,49 +113,42 @@ Page({
     uploadimginfo.map(reduceimg);
     switch(true){
       case !formvalue.title:
-        wx.hideLoading();
         wx.showModal({
           title: '提示',
           content: '请填写信息标题'
         });
       break;
       case !formvalue.location:
-        wx.hideLoading();
         wx.showModal({
           title: '提示',
           content: '请填写详细地址'
         });
       break;
       case !formvalue.area:
-        wx.hideLoading();
         wx.showModal({
           title: '提示',
           content: '请填写店铺面积'
         });
       break;
       case !mapinfostatus:
-        wx.hideLoading();
         wx.showModal({
           title: '提示',
           content: '请添加商铺定位（点击商铺定位右侧绿色标志添加）'
         });
       break;
       case !formvalue.description:
-        wx.hideLoading();
         wx.showModal({
           title: '提示',
           content: '请添加详情描述'
         });
       break;
       case !that.data.specialtiesSelected[1]:
-        wx.hideLoading();
         wx.showModal({
           title: '提示',
           content: '请添加至少两个商铺特点'
         });
       break;
       case !uploadedimgs[0]:
-        wx.hideLoading();
         wx.showModal({
           title: '提示',
           content: '请上传至少一张店铺照片'
@@ -160,14 +157,14 @@ Page({
       default:
         wx.getStorage({
           key: 'userInfo',
-          success: function(res) {
+          success: function (res) {
             const wechatId = res.data.wechatId;
             const regioninfo = that.data.regionrange[formvalue.region];
             const specialties = that.data.specialtiesSelected;
             const cycleinfo = that.data.cycle[formvalue.paymentcycle];
             const mapinfo = that.data.mapinfo;
             let transferfeedefault = 0;
-            if (formvalue.transferfee){
+            if (formvalue.transferfee) {
               transferfeedefault = formvalue.transferfee;
             };
             let price = 0;
@@ -189,43 +186,67 @@ Page({
               uploadimg: uploadedimgs,
               mapinfo: mapinfo
             }
-            const storeinfoStringify = JSON.stringify(storeinfo);
-            console.log(storeinfoStringify);
-            wx.request({
-              url: 'https://lingtongzixun.cn/SAPP/rentformsubmit',
-              method: 'post',
-              data: storeinfoStringify,
-              header: {
-                'content-type': 'application/json'
-              },
-              success: (res) => {
-                wx.hideLoading();
-                wx.showModal({
-                  title: '提示',
-                  content: '上传成功',
-                  showCancel: false,
-                  success(res){
-                    wx.redirectTo({
-                      url: '/pages/rentmanagement/rentmanagement',
+            if(formvalue.hot){
+              console.log(storeinfo);
+              that.setData({
+                hotpay: true,
+                storeinfo: storeinfo
+              });
+            }else{
+              const storeinfoStringify = JSON.stringify(storeinfo);
+              wx.showModal({
+                title: '提示',
+                content: '上传商铺信息需要2铺币',
+                success: modalres=>{
+                  if(modalres.confirm){
+                    wx.showLoading({
+                      title: '信息提交中',
+                    });
+                    wx.request({
+                      url: 'https://lingtongzixun.cn/SAPP/rentformsubmit',
+                      method: 'post',
+                      data: storeinfoStringify,
+                      header: {
+                        'content-type': 'application/json'
+                      },
+                      success: (res) => {
+                        wx.hideLoading();
+                        wx.showModal({
+                        title: '提示',
+                        content: '上传成功',
+                        showCancel: false,
+                          success(res) {
+                            wx.redirectTo({
+                              url: '/pages/rentmanagement/rentmanagement',
+                            })
+                          }
+                        })
+                      }
                     })
+                  }else if(modalres.cancel){
                   }
-                })
-              }
-            })
-          },
+                }
+              })
+            }
+          }
         })
     }
   },
   selectlocation(){
+    console.log("clicked");
     const that = this;
     wx.chooseLocation({
       success: function(res) {
+        console.log(res);
         that.setData({
           selectlocation: true,
           'mapinfo.latitude': res.latitude,
           'mapinfo.longitude': res.longitude
         })
       },
+      fail: function(res){
+        console.log(res);
+      }
     })
   },
   uploadimg(e){

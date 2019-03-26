@@ -137,6 +137,144 @@ Page({
   searchresults: true,
   currentTag: 0
   },
+  clearall(e){
+    const clearedselectlist = [{
+      name: "区域",
+      color: "#333333",
+      fontsize: "14px",
+      tap: "regionsearch",
+      status: false,
+      list: [{
+        name: "北区",
+        status: false
+      }, {
+          name: "东区",
+          status: false
+        }, {
+          name: "中心区",
+          status: false
+        }, {
+          name: "西区",
+          status: false
+        }, {
+          name: "南区",
+          status: false
+        }, {
+          name: "禹都",
+          status: false
+        }, {
+          name: "空港",
+          status: false
+        }, {
+          name: "城郊各县",
+          status: false
+        }]
+    }, {
+        name: "面积",
+        color: "#333333",
+        fontsize: "14px",
+        tap: "areasearch",
+        status: false,
+        list: [{
+          name: "不限",
+          status: false
+        }, {
+            name: "20㎡以下",
+            status: false
+          }, {
+            name: "20-50㎡",
+            status: false
+          }, {
+            name: "50-100㎡",
+            status: false
+          }, {
+            name: "100-200㎡",
+            status: false
+          }, {
+            name: "200-500㎡",
+            status: false
+          }, {
+            name: "500㎡以上",
+            status: false
+          }]
+      }, {
+        name: "费用",
+        color: "#333333",
+        fontsize: "14px",
+        tap: "feesearch",
+        status: false,
+        list: [{
+          name: "不限",
+          status: false
+        }, {
+            name: "2千元以下",
+            status: false
+          }, {
+            name: "2-5千元",
+            status: false
+          }, {
+            name: "5千-1万元",
+            status: false
+          }, {
+            name: "1-2万元",
+            status: false
+          }, {
+            name: "2-5万元",
+            status: false
+          }, {
+            name: "5万元以上",
+            status: false
+          }]
+      }, {
+        name: "特征",
+        color: "#333333",
+        fontsize: "14px",
+        tap: "speciatysearch",
+        status: false,
+        list: [{
+          name: "无转让费",
+          status: false
+        }, {
+            name: "在商场内",
+            status: false
+          }, {
+            name: "临近学校",
+            status: false
+          }, {
+            name: "在学校内",
+            status: false
+          }, {
+            name: "证照齐全",
+            status: false
+          }, {
+            name: "租写字楼",
+            status: false
+          }, {
+            name: "空房转让",
+            status: false
+          }, {
+            name: "生意转让",
+            status: false
+          }, {
+            name: "厂房场地",
+            status: false
+          }, {
+            name: "仓库租售",
+            status: false
+          }, {
+            name: "临街商铺",
+            status: false
+          }, {
+            name: "小吃摊位",
+            status: false
+          }]
+      }];
+    const currentTag = this.data.currentTag;
+    clearedselectlist[currentTag].status = true;
+    this.setData({
+      selectlist: clearedselectlist
+    })
+  },
   select(e){
     const index = e.currentTarget.dataset.index;
     const currentTag = this.data.currentTag;
@@ -202,7 +340,6 @@ Page({
       return that.data.selectlist[selectIndex].list.map(maplists);
     }
     [0, 1, 2, 3].map(mapselects);
-    console.log(selects);
     wx.request({
       url: 'https://lingtongzixun.cn/SAPP/selects',
       data: selects,
@@ -261,7 +398,6 @@ Page({
         },
         method: 'POST',
         success: function(res){
-          console.log(res.data);
           if(res.data[0]){
             that.setData({
               searchresults: true,

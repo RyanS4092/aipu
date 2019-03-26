@@ -89,7 +89,6 @@ Page({
             'content-type': 'application/x-www-form-urlencoded'
           },
           success: (res) => {
-            console.log(res);
             if (res.data == "alreadyCheckIn"){
               that.setData({
                 loadingstatus: false
@@ -130,7 +129,6 @@ Page({
     wx.getStorage({
         key: 'userInfo',
         success(res) {
-          console.log(res.data);
           that.setData({
             userInfo: res.data,
             currentCoin: res.data.wechatcoin
