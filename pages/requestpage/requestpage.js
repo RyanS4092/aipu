@@ -5,7 +5,48 @@ Page({
    * 页面的初始数据
    */
   data: {
-    requestinform:[]
+    requestinform:[],
+    pageNow: 0
+  },
+  onReachBottom() {
+    wx.showLoading({
+      title: '正在加载更多信息',
+      mask: true
+    });
+    const pageNow = this.data.pageNow + 1
+    console.log(pageNow);
+    this.setData({
+      pageNow: pageNow
+    });
+    const that = this;
+    const info = {
+      page: pageNow
+    }
+    const infostringify = JSON.stringify(info);
+    wx.request({
+      url: 'https://lingtongzixun.cn/SAPP/requestpage',
+      data: infostringify,
+      header: {
+        'content-type': 'application/json'
+      },
+      method: 'POST',
+      success: function (res) {
+        const requests = that.data.rentinform;
+        const requestinform = requests.concat(res.data);
+        console.log(rentinform);
+        that.setData({
+          requestinform: requestinform
+        });
+        wx.hideLoading();
+      },
+      fail: function (res) {
+        wx.hideLoading();
+        wx.showModal({
+          title: '提示',
+          content: '数据获取失败，请退出后重试',
+        })
+      }
+    })
   },
 
   /**
@@ -17,9 +58,13 @@ Page({
       mask: true
     });
     const that = this;
+    const info = {
+      page: 0
+    }
+    const infostringify = JSON.stringify(info);
     wx.request({
       url: 'https://lingtongzixun.cn/SAPP/requestpage',
-      data: '',
+      data: infostringify,
       header: {
         'content-type': 'application/json'
       },

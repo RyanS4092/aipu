@@ -1,5 +1,5 @@
 <!--components/myrents/myrents.wxml-->
-<navigator open-type='navigate' class="rentinform" wx:for="{{myrents}}" url="../rents/rents?rentid={{item._id}}" wx:key="{{index}}">
+<navigator open-type='navigate' class="rentinform" wx:for="{{myrents}}" url="../modifyrents/modifyrents?rentid={{item._id}}" wx:key="{{index}}">
   <view class='rentinform-wrap'>
     <view class='rentinform-left'>
       <image class='rentinform-img' src='{{item.uploadimg[0]}}'></image>
@@ -11,7 +11,7 @@
       <view class='rentinform-buttons'>
         <button catchtap='toHot' data-rentid='{{item._id}}' data-hot="{{item.hot}}" hover-class='rentinform-buttons-hover' hover-stop-propagation="{{true}}" class='rentinform-buttons-items'>登上热门</button>
         <button catchtap='toRefresh' data-rentid='{{item._id}}' hover-class='rentinform-buttons-hover' hover-stop-propagation="{{true}}" class='rentinform-buttons-items'>刷新信息</button>
-        <button catchtap='toDelete' hover-class='rentinform-buttons-hover' hover-stop-propagation="{{true}}" class='rentinform-buttons-items'>删除信息</button>
+        <button catchtap='toDelete' hover-class='rentinform-buttons-hover' data-rentid='{{item._id}}' hover-stop-propagation="{{true}}" class='rentinform-buttons-items'>删除信息</button>
       </view>
     </view>
   </view>

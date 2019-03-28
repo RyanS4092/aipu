@@ -142,6 +142,30 @@ Page({
       this.getTabBar().setData({
         selected: 2
       })
-    }
+    };
+    const that = this;
+    wx.getStorage({
+      key: 'userInfo',
+      success(res) {
+        const userInfo = res.data;
+        const info = { wechatId: res.data.wechatId };
+        const infostrigify = JSON.stringify(info);
+        wx.request({
+          url: 'https://lingtongzixun.cn/SAPP/coinsinfo',
+          method: 'post',
+          header: {
+            'content-type': 'application/json'
+          },
+          data: infostrigify,
+          success(res) {
+            console.log(res);
+            that.setData({
+              userInfo: userInfo,
+              currentCoin: res.data.wechatcoin
+            })
+          }
+        })
+      }
+    })
   }
 })

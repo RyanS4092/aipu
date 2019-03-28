@@ -1,0 +1,77 @@
+<!--pages/modifyrents/modifyrents.wxml-->
+<view class='greyback'>
+  <form bindsubmit='rentSubmit' class='form'>
+    <view class='formbar'>
+      <text class='formtitles'>标题</text>
+      <input name="title" value='{{originRentInfo.title}}' class='forminput' placeholder="输入信息标题（30字内）" maxlength="30" type='text'></input>
+    </view>
+    <view class='formbar'>
+      <text class='formtitles'>区域</text>
+      <picker name="region" bindchange="bindPickerChangeRegion" value="{{regionindex}}" range="{{regionrange}}">
+        <view class="picker">
+          {{regionrange[regionindex]}}
+        </view>
+      </picker>
+    </view>
+    <view class='formbar'>
+      <text class='formtitles'>地址</text>
+      <input class='forminput' name="location" value='{{originRentInfo.location}}' placeholder="详细地址" maxlength="45" type='text'></input>
+    </view>
+    <view class='formbar'>
+      <text class='formtitles'>面积</text>
+      <input class='forminput' value='{{originRentInfo.area}}' placeholder="单位：㎡" maxlength="6" type='number' name="area"></input>
+    </view>
+    <view class='formbar'>
+      <text class='formtitles'>租金</text>
+      <input name="price" wx:if="{{originRentInfo.price}}" class='forminput' value='{{originRentInfo.price}}' placeholder="单位：元/月(不填为面议)" maxlength="10" type='number'></input>
+      <input name="price" wx:if="{{!originRentInfo.price}}" class='forminput' placeholder="单位：元/月(不填为面议)" maxlength="10" type='number'></input>
+    </view>
+    <view class='formbar'>
+      <text class='formtitles'>付款周期</text>
+      <picker name="paymentcycle" bindchange="bindPickerChangeCycle" value="{{cycleindex}}" range="{{cycle}}">
+        <view class="picker">
+          {{cycle[cycleindex]}}
+        </view>
+      </picker>
+    </view>
+    <view class='formbar'>
+      <text class='formtitles'>转让费</text>
+      <input wx:if="{{originRentInfo.transferfee}}" name="transferfee" class='forminput' value='{{originRentInfo.transferfee}}' placeholder="单位：万元(不填为无)" maxlength="5" type='number'></input>
+      <input wx:if="{{!originRentInfo.transferfee}}" name="transferfee" class='forminput' placeholder="单位：万元(不填为无)" maxlength="5" type='number'></input>
+    </view>
+    <view class='formbar'>
+      <text class='formtitles'>商铺定位</text>
+      <view class='selectlocation-wrap' bindtap='selectlocation'>
+        <image wx:if="{{selectlocation}}" src='../../image/icon/success.png' class='success'></image>
+        <image src='../../image/icon/location.png' class='selectlocation'></image>
+      </view>
+    </view>
+    <view class='formbar'>
+      <text class='formtitles'>商铺特点</text>
+      <view class='specialties-select'>点击选择</view>
+    </view>
+    <checkbox-group class="specialties" bindchange="specialtiesSelected">
+      <label class="specialties-item" wx:for="{{specialties}}" wx:key="{{index}}">
+        <checkbox value="{{item.value}}" checked="{{item.checked}}"/>{{item.value}}
+      </label>
+    </checkbox-group>
+    <view class='textarea-wrap'>
+      <textarea name="description" class='textarea' value='{{originRentInfo.description}}' placeholder="添加详情描述（140字内）" placeholder-style="color:#000;" />
+    </view>
+    <cover-view class='submitbutton'>
+      <button bindtap='viewrentinfo' class='viewrentinfo'>浏览信息</button>
+      <button form-type='submit' class='submit' >修改并浏览</button>
+    </cover-view>
+  </form>
+  <view class='uploadimg'>
+    <view class='uploadimg-title'>店铺照片</view>
+    <view class='uploadimg-reminder'>上传更多店铺照片，获取更多店铺关注(上限9张)</view>
+    <view class='uploadarea'>
+       <view class='greyblock' wx:for="{{uploadimg}}" wx:key="{{index}}" bindtap='uploadimg' data-index="{{index}}">
+          <view wx:if="{{!item.uploadstatus}}" class='default'>+</view>
+          <image wx:if="{{item.uploadstatus}}" class='imguploaded' src='{{item.imgsrc}}'></image>
+       </view>
+    </view>
+  </view>
+  <view style='height:80px;'></view>
+</view>

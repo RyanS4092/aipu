@@ -5,8 +5,9 @@
   </view>
   <view class='request-timeShow'>{{item.timeShow}}</view>
   <view class='request-buttons'>
-    <button catchtap='toHot' hover-class='request-buttons-hover' hover-stop-propagation="{{true}}" class='request-buttons-items'>刷新信息</button>
-    <button catchtap='toRefresh' hover-class='request-buttons-hover' hover-stop-propagation="{{true}}" class='request-buttons-items'>删除信息</button>
+    <button catchtap='toModify' data-requestid='{{item._id}}' hover-class='request-buttons-hover' hover-stop-propagation="{{true}}" class='request-buttons-items'>修改信息</button>
+    <button catchtap='toRefresh' data-requestid='{{item._id}}' hover-class='request-buttons-hover' hover-stop-propagation="{{true}}" class='request-buttons-items'>刷新信息</button>
+    <button catchtap='toDelete' data-requestid='{{item._id}}' hover-class='request-buttons-hover' hover-stop-propagation="{{true}}" class='request-buttons-items'>删除信息</button>
   </view>
   <view class='divider-request'></view>
 </navigator>

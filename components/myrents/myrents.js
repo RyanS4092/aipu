@@ -31,6 +31,51 @@ Component({
         hotpay: false
       })
     },
+    toDelete(e){
+      const rentid = e.currentTarget.dataset.rentid;
+      const info = {
+        rentid: rentid
+      }
+      const infostringify = JSON.stringify(info);
+      wx.showModal({
+        title: '提示',
+        content: '确定要删除本条信息吗？',
+        success(res) {
+          if(res.confirm){ 
+            wx.request({
+              url: 'https://lingtongzixun.cn/SAPP/toDelete',
+              data: infostringify,
+              header: {
+                'content-type': 'application/json'
+              },
+              method: 'POST',
+              success: function (res) {
+                if(res.data === 'success'){
+                  wx.showModal({
+                    title: '提示',
+                    content: '信息删除成功',
+                    showCancel: true,
+                    success(res){
+                      wx.navigateTo({
+                        url: '/pages/rentmanagement/rentmanagement',
+                      })
+                    }
+                  })
+                }else{
+                  wx.showModal({
+                    title: '提示',
+                    content: '删除失败，请稍后重试',
+                    showCancel: true
+                  })
+                }
+              }
+            });
+          }else if(res.cancel){
+
+          }
+        }
+      })
+    },
     toRefresh(e){
       const rentid = e.currentTarget.dataset.rentid;
       wx.showModal({

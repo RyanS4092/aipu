@@ -14,7 +14,9 @@
     "pages/rentform/rentform",
     "pages/rentmanagement/rentmanagement",
     "pages/requestmanagement/requestmanagement",
-    "pages/charge/charge"
+    "pages/charge/charge",
+    "pages/modifyrents/modifyrents",
+    "pages/modifyrequests/modifyrequests"
   ],
   "tabBar": {
     "custom": true,

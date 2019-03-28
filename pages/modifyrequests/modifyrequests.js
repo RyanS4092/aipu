@@ -1,27 +1,17 @@
-// pages/seekform/seekform.js
+// pages/modifyrequests/modifyrequests.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    agentinform: [
-    {
-      agentavatar: "/image/agent/guangdi.jpg",
-      nametitle: "选址顾问-曹光弟",
-      words: "完善信息，会加快选址哦，速度提高5倍以上"
-    },
-    {
-      agentavatar: "/image/agent/shaofei.jpg",
-      nametitle: "选址顾问-相诏飞",
-      words: "完善信息，会加快选址哦，速度提高5倍以上"
-    }],
-    area: ["0-50㎡", "50-100㎡", "100-500㎡", "500-1000㎡","1000-10000㎡"],
+    area: ["0-50㎡", "50-100㎡", "100-500㎡", "500-1000㎡", "1000-10000㎡"],
     areaindex: 0,
-    budget: ["2000元以下", "2-5千元", "5千-1万元", "1-2万元", "2-5万元","5万元以上"],
+    budget: ["2000元以下", "2-5千元", "5千-1万元", "1-2万元", "2-5万元", "5万元以上"],
     budgetindex: 0,
     region: ["北区", "东区", "中心区", "西区", "南区", "禹都", "空港", "城郊各县"],
-    regionindex: 0
+    regionindex: 0,
+    originRequestInfo: {}
   },
   bindPickerChangeRegion(e) {
     this.setData({
@@ -44,7 +34,6 @@ Page({
     });
     const that = this;
     const formvalue = e.detail.value;
-    console.log(formvalue);
     switch (true) {
       case !formvalue.title:
         wx.hideLoading();
@@ -52,14 +41,14 @@ Page({
           title: '提示',
           content: '请填写求租标题'
         });
-      break;
+        break;
       case !formvalue.plan:
         wx.hideLoading();
         wx.showModal({
           title: '提示',
           content: '请填写计划开店的类型'
         });
-      break;
+        break;
       default:
         wx.getStorage({
           key: 'userInfo',
@@ -69,17 +58,17 @@ Page({
             const budgetinfo = that.data.budget[formvalue.budget];
             const preferlocationinfo = that.data.region[formvalue.preferlocation];
             const requestinfo = {
-              wechatId: wechatId,
               title: formvalue.title,
               area: areainfo,
               budget: budgetinfo,
               preferlocation: preferlocationinfo,
               plan: formvalue.plan,
-              transferfee: formvalue.transferfee
+              transferfee: formvalue.transferfee,
+              requestid: that.data.requestid
             }
             const requestinfoStringify = JSON.stringify(requestinfo);
             wx.request({
-              url: 'https://lingtongzixun.cn/SAPP/requestformsubmit',
+              url: 'https://lingtongzixun.cn/SAPP/modifyrequests',
               method: 'post',
               data: requestinfoStringify,
               header: {
@@ -108,7 +97,49 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    });
+    const that = this;
+    wx.getStorage({
+      key: 'userInfo',
+      success: function (userInfo) {
+        const ids = {
+          requestid: options.requestid,
+          wechatId: userInfo.data.wechatId
+        };
+        const sentids = JSON.stringify(ids);
+        wx.request({
+          url: 'https://lingtongzixun.cn/SAPP/modifyrequestsinfo',
+          data: sentids,
+          header: {
+            'content-type': 'application/json'
+          },
+          method: 'POST',
+          success: function (res) {
+            const areaindex = that.data.area.indexOf(res.data.area);
+            const budgetindex = that.data.budget.indexOf(res.data.budget);
+            const regionindex = that.data.region.indexOf(res.data.preferlocation);
+            that.setData({
+              originRequestInfo: res.data,
+              areaindex: areaindex,
+              budgetindex: budgetindex,
+              regionindex: regionindex,
+              requestid: options.requestid
+            });
+            wx.hideLoading();
+          },
+          fail: function (res) {
+            wx.hideLoading();
+            wx.showModal({
+              title: '提示',
+              content: '数据获取失败，请退出后重试',
+            })
+          }
+        });
+      }
+    })
   },
 
   /**

@@ -2,6 +2,7 @@
 
 Page({
   data: {
+    pageNow: 0,
     selectlist: [{
       name: "区域",
       color: "#333333",
@@ -275,6 +276,55 @@ Page({
       selectlist: clearedselectlist
     })
   },
+  onReachBottom(){
+    wx.showLoading({
+      title: '正在加载更多',
+      mask: true
+    });
+    const pageNow = this.data.pageNow +1
+    console.log(pageNow);
+    this.setData({
+      pageNow: pageNow
+    });
+    const that = this;
+    const info = {
+      page: pageNow
+    }
+    const infostringify = JSON.stringify(info);
+    wx.request({
+      url: 'https://lingtongzixun.cn/SAPP/rentsLoad',
+      data: infostringify,
+      header: {
+        'content-type': 'application/json'
+      },
+      method: 'POST',
+      success: function (res) {
+        if(res.data === "overload"){
+          wx.hideLoading();
+          wx.showModal({
+            title: '提示',
+            content: '试试用条件搜索获取更精准的信息吧',
+            showCancel: false
+          })
+        }else{
+          const rents = that.data.rentinform;
+          const rentinform = rents.concat(res.data);
+          console.log(rentinform);
+          that.setData({
+            rentinform: rentinform
+          });
+          wx.hideLoading();
+        }
+      },
+      fail: function (res) {
+        wx.hideLoading();
+        wx.showModal({
+          title: '提示',
+          content: '数据获取失败，请退出后重试',
+        })
+      }
+    })
+  },
   select(e){
     const index = e.currentTarget.dataset.index;
     const currentTag = this.data.currentTag;
@@ -460,9 +510,13 @@ Page({
       mask: true
     });
     const that = this;
+    const info = {
+      page: 0
+    }
+    const infostringify =  JSON.stringify(info);
     wx.request({
-      url: 'https://lingtongzixun.cn/SAPP/indexhot',
-      data: '',
+      url: 'https://lingtongzixun.cn/SAPP/rentsLoad',
+      data: infostringify,
       header: {
         'content-type': 'application/json'
       },
