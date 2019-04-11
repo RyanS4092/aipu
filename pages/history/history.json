@@ -2,5 +2,6 @@
   "usingComponents": {
     "rentlist": "/components/rentlist/rentlist",
     "requestcomponent": "/components/requestcomponent/requestcomponent"
-  }
+  },
+  "navigationBarTitleText": "爱铺"
 }

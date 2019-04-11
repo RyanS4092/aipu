@@ -29,7 +29,7 @@ Page({
         func: "history"
       }, {
         name: "关于我们",
-        description: "关于灵通商铺",
+        description: "关于爱铺",
         func: "about"
       }, {
         name: "联系客服",

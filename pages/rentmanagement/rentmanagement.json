@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "myrents": "/components/myrents/myrents"
-  }
+  },
+  "navigationBarTitleText": "爱铺"
 }

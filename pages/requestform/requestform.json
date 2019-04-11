@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "gradientbar": "/components/gradientbar/gradientbar"
-  }
+  },
+  "navigationBarTitleText": "爱铺"
 }

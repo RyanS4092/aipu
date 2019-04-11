@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "requestcomponent": "/components/requestcomponent/requestcomponent"
-  }
+  },
+  "navigationBarTitleText": "爱铺"
 }
